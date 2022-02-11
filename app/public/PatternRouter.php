@@ -32,5 +32,7 @@ class PatternRouter
             http_response_code(404);
             die('404 not found');
         }
+
+        // hello how are you
     }
 }
