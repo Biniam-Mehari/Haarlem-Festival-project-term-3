@@ -1,6 +1,6 @@
 <?php
 
-class HomeController
+class CmsController
 {
     public function index()
     {
