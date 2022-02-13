@@ -33,6 +33,5 @@ class PatternRouter
             die('404 not found');
         }
 
-        // hello how are you
     }
 }

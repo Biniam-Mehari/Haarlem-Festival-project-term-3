@@ -16,9 +16,9 @@
     <div class="wrapper">
       <ul>
         <li><a href="home">Home</a></li>
-        <li><a href="BookView">Books</a></li>
-        <li><a href="contact">Contact</a></li>
-        <li><a href="signup">Become a member</a></li>
+        <li><a href="dance">Dance</a></li>
+        <li><a href="food">Food</a></li>
+        <li><a href="history">History</a></li>
        
        <?php 
          echo('<li><a class= "loginposition" href="login">LogIn</a></li>'); //<li><a class= "loginposition" href="login">LogIn</a></li>
@@ -26,7 +26,6 @@
        ?>
       
      
-       
        
       </ul>
   
