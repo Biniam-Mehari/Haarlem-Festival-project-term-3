@@ -10,7 +10,7 @@ class CombiDAL
     //makes the connection to the database
     function __construct()
     {
-        $this->instance = DbConnection::getInstance();
+        $this->instance = DB::getInstance();
         $this->connection = $this->instance->getConnection();
     }
 

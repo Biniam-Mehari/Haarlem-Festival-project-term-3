@@ -1,0 +1,280 @@
+
+/*Styling for the breadcrums */
+
+
+
+.breadcrumb-navigation a {
+    color:#026ece;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+}
+
+.breadcrumb-navigation > li {
+    display: inline;
+  }
+
+.breadcrumb-navigation > li > a {
+    color: #026ece;
+    text-decoration: none;
+}
+
+.breadcrumb-navigation > li > a:hover {
+    color: #c0c302;
+}
+
+.breadcrumb-navigation li + li:before {
+    padding: 4px;
+    content: ">";
+}
+
+
+/*Styling for banner*/
+
+.banner img {
+    height:400px;
+    width:100%;
+}
+
+.banner {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.banner h1 {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+}
+
+/*This code makes sure that left elements stay on the left side and right on the right side. */
+
+
+.content-leftside {
+    float: left;
+  }
+
+  .content-rightside {
+      float: right;
+  }
+
+  .restaurant-title {
+    position: relative;
+    height: 120px;
+    width: 730px;
+    background-color: #2D68B3;
+    margin-top: 100px;
+  }
+
+  .restaurant-title h1 {
+      font-size: 60px;
+      position: absolute;
+      text-align: center;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+  }
+
+  .restaurant-title h2 {
+    position: absolute;
+    text-align: center;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:white;
+    font-size: 20px;
+  } 
+
+  .information h1, p {
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.information h1 {
+    margin-top: 50px;
+}
+
+ p {
+    font-size: 20px;
+}
+
+#map {
+    height: 400px;
+    width: 548px;
+    margin-top: 50px;
+    margin-left: 75px;
+}
+
+.line {
+    border: 1px solid red;
+}
+
+.contact h1, p {
+    text-align: center;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+
+.safety-measures {
+    text-align: center;
+    display:flex;
+}
+
+.corona-measures {
+    flex:1;
+}
+
+.reservation-form {
+    margin-top: 100px;
+}
+
+.reservation-form h1 {
+    font-size: 50px;
+}
+
+.outer-box {
+    background-color: white;
+    width:650px;
+    height:1100px;
+}
+
+.date-box {
+    width:546px;
+    height:300px;
+    background-color: #DBDBDB;
+    margin-top: 50px;
+    border-radius: 6px;
+}
+
+.date-box h3 {
+    font-size: 36px;
+}
+
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    min-width: 400px;
+    border-radius: 6px;
+    text-align: left;
+  }
+  
+  /* Dropdown button on hover & focus */
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #2D68B3;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #2D68B3;
+    min-width: 400px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 6px;
+    margin-top:10px;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #11417E}
+  
+  /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+  .show {display:block;}
+
+
+
+  .session-box {
+    width:546px;
+    height:300px;
+    background-color: #DBDBDB;
+    margin-top: 50px;
+    border-radius: 6px;
+    box-shadow: 0px 4px #000000;
+    
+    
+}
+
+.session-one {
+    min-width: 400px;
+    border-radius: 6px;
+    background-color: #2D68B3;
+    padding: 16px;
+    font-size: 16px;
+    color: white;
+    display: flex;
+    margin-top: 20px
+}
+
+.session-two {
+    min-width: 400px;
+    border-radius: 6px;
+    background-color: #2D68B3;
+    padding: 16px;
+    font-size: 16px;
+    color: white;
+    display: flex;
+    margin-top: 20px
+}
+
+.session-three {
+    min-width: 400px;
+    border-radius: 6px;
+    background-color: #2D68B3;
+    padding: 16px;
+    font-size: 16px;
+    color: white;
+    display: flex;
+    margin-top: 20px
+}
+
+.session-time {
+    flex:1;
+    text-align:center;
+    font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

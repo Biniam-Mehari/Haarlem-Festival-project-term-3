@@ -7,7 +7,7 @@ class TestService
 
 {
 
-    private DbConnection $db;
+    private DB $db;
 
     private $connection;
 
@@ -15,7 +15,7 @@ class TestService
 
     {
 
-        $this->db = DbConnection::getInstance();
+        $this->db = DB::getInstance();
 
         $this->connection = $this->db->getConnection();
 

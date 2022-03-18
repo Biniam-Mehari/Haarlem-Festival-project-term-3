@@ -1,0 +1,177 @@
+
+/*Styling for the breadcrums */
+
+
+
+.breadcrumb-navigation a {
+    color:#026ece;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+}
+
+.breadcrumb-navigation > li {
+    display: inline;
+  }
+
+.breadcrumb-navigation > li > a {
+    color: #026ece;
+    text-decoration: none;
+}
+
+.breadcrumb-navigation > li > a:hover {
+    color: #c0c302;
+}
+
+.breadcrumb-navigation li + li:before {
+    padding: 4px;
+    content: ">";
+}
+
+
+/*Styling for banner*/
+
+.banner img {
+    height:400px;
+    width:100%;
+}
+
+.banner {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.banner h1 {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+}
+
+/*This code makes sure that left elements stay on the left side and right on the right side. */
+
+
+.content-leftside {
+    float: left;
+  }
+
+  .content-rightside {
+      float: right;
+  }
+
+.restaurant-title {
+    position: relative;
+    height: 120px;
+    width: 730px;
+    background-color: #2D68B3;
+    margin-top: 100px;
+  }
+
+  .restaurant-title h1 {
+      font-size: 60px;
+      position: absolute;
+      text-align: center;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+  }
+
+  .restaurant-title h2 {
+    position: absolute;
+    text-align: center;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:white;
+    font-size: 20px;
+  }  
+
+  .restaurant-picture {
+    position: relative; 
+  }
+
+  .restaurant-pic {
+    width:537px;
+    height:478px;
+    margin-top:100px;
+  }
+
+  .about-restaurant h1, p {
+      text-align: center;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+
+  .about-restaurant h1 {
+      margin-top: 50px;
+  }
+
+  .about-restaurant p {
+      font-size: 17px;
+  }
+
+  .video {
+      text-align: center;
+      margin-top: 20px
+  }
+
+  .booking-table h1 {
+      text-align: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+
+  .btn-book {
+    border: none;
+    color: rgb(255, 255, 255);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: #2D68B3;
+    align-items: center;
+  }
+
+  .btn-wishlist {
+    border: none;
+    color: rgb(255, 255, 255);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: #E86941;
+  }
+
+  .buttons {
+      text-align: center;
+  }
+
+  .general-information {
+      text-align:center;
+      margin-top: 30px;
+  }
+
+  .contact-information {
+      text-align: center;
+      margin-top: 50px;
+  }
+
+  .line {
+    border: 1px solid rgb(255, 0, 0);
+    align-self: center;
+  }
+
+
+
+
+
+
+
+
+
+
+  

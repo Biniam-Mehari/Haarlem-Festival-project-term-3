@@ -4,7 +4,7 @@
  define('DB_PASSWORD', 'dpwGMnERcq');
  define('DB_NAME', 'sql11475581');
 
-class DbConnection {
+class DB {
     private $connection;
     private static $instance; //The single instance
 
@@ -14,7 +14,7 @@ class DbConnection {
     */
     public static function getInstance() {
         if(!self::$instance) {
-            self::$instance = new DbConnection();
+            self::$instance = new DB();
         }
         return self::$instance;
     }

@@ -2,192 +2,185 @@
 
 class Event
 {
-    private $Event_ID;
-    private $EventName;
-    private $ProductName;
-    private $StartTime;
-    private $EndTime;
-    private $Seats;
-    private $Price;
-    private $Btw;
+    private $id;
+    private $eventType;
+    private $startTime;
+    private $endTime;
+    private $seats;
+    private $price;
+    private $VAT;
+    private $imageName;
 
-    public function __construct()
+
+    /**
+     * Get the value of id
+     */ 
+    public function getId()
     {
-        $get_arguments       = func_get_args();
-        $number_of_arguments = func_num_args();
-
-        if (method_exists($this, $method_name = '__construct'.$number_of_arguments)) {
-            call_user_func_array(array($this, $method_name), $get_arguments);
-        }
-    }
-
-    function __construct8($Event_ID, $EventName, $ProductName, $StartTime, $EndTime, $Seats, $Price, $Btw)
-    {
-        $this->Event_ID = $Event_ID;
-        $this->EventName = $EventName;
-        $this->ProductName = $ProductName;
-        $this->StartTime = $StartTime;
-        $this->EndTime = $EndTime;
-        $this->Seats = $Seats;
-        $this->Price = $Price;
-        $this->Btw = $Btw;
-
-    }
-
-    function __construct6($Event_ID, $EventName, $ProductName, $StartTime, $Price, $Btw){
-        $this->Event_ID = $Event_ID;
-        $this->EventName = $EventName;
-        $this->ProductName = $ProductName;
-        $this->StartTime = $StartTime;
-        $this->Price = $Price;
-        $this->Btw = $Btw;
-    }
-    
-     function __construct5($ProductName, $StartTime, $EndTime, $Seats, $Price){
-        $this->ProductName = $ProductName;
-        $this->StartTime = $StartTime;
-        $this->EndTime = $EndTime;
-        $this->Seats = $Seats;
-        $this->Price = $Price;
-    }
-    
-    function __construct3($StartTime, $EndTime, $Price){
-        $this->StartTime = $StartTime;
-        $this->EndTime = $EndTime;
-        $this->Price = $Price;
-    }
-
-    function __construct1( $Price){
-        $this->Price = $Price;
+        return $this->id;
     }
 
     /**
-     * @return mixed
-     */
-    public function getEventID()
+     * Set the value of id
+     *
+     * @return  self
+     */ 
+    public function setId($id)
     {
-        return $this->Event_ID;
+        $this->id = $id;
+
+        return $this;
     }
 
     /**
-     * @param mixed $Event_ID
-     */
-    public function setEventID($Event_ID)
+     * Get the value of eventType
+     */ 
+    public function getEventType()
     {
-        $this->Event_ID = $Event_ID;
+        return $this->eventType;
     }
 
     /**
-     * @return mixed
-     */
-    public function getEventName()
+     * Set the value of eventType
+     *
+     * @return  self
+     */ 
+    public function setEventType($eventType)
     {
-        return $this->EventName;
+        $this->eventType = $eventType;
+
+        return $this;
     }
 
     /**
-     * @param mixed $EventName
-     */
-    public function setEventName($EventName)
-    {
-        $this->EventName = $EventName;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getProductName()
-    {
-        return $this->ProductName;
-    }
-
-    /**
-     * @param mixed $ProductName
-     */
-    public function setProductName($ProductName)
-    {
-        $this->ProductName = $ProductName;
-    }
-
-    /**
-     * @return mixed
-     */
+     * Get the value of startTime
+     */ 
     public function getStartTime()
     {
-        return $this->StartTime;
+        return $this->startTime;
     }
 
     /**
-     * @param mixed $StartTime
-     */
-    public function setStartTime($StartTime)
+     * Set the value of startTime
+     *
+     * @return  self
+     */ 
+    public function setStartTime($startTime)
     {
-        $this->StartTime = $StartTime;
+        $this->startTime = $startTime;
+
+        return $this;
     }
 
     /**
-     * @return mixed
-     */
+     * Get the value of endTime
+     */ 
     public function getEndTime()
     {
-        return $this->EndTime;
+        return $this->endTime;
     }
 
     /**
-     * @param mixed $EndTime
-     */
-    public function setEndTime($EndTime)
+     * Set the value of endTime
+     *
+     * @return  self
+     */ 
+    public function setEndTime($endTime)
     {
-        $this->EndTime = $EndTime;
+        $this->endTime = $endTime;
+
+        return $this;
     }
 
     /**
-     * @return mixed
-     */
+     * Get the value of seats
+     */ 
     public function getSeats()
     {
-        return $this->Seats;
+        return $this->seats;
     }
 
     /**
-     * @param mixed $Seats
-     */
-    public function setSeats($Seats)
+     * Set the value of seats
+     *
+     * @return  self
+     */ 
+    public function setSeats($seats)
     {
-        $this->Seats = $Seats;
+        $this->seats = $seats;
+
+        return $this;
     }
 
     /**
-     * @return mixed
-     */
+     * Get the value of price
+     */ 
     public function getPrice()
     {
-        return $this->Price;
+        return $this->price;
     }
 
     /**
-     * @param mixed $Price
-     */
-    public function setPrice($Price)
+     * Set the value of price
+     *
+     * @return  self
+     */ 
+    public function setPrice($price)
     {
-        $this->Price = $Price;
+        $this->price = $price;
+
+        return $this;
     }
 
     /**
-     * @return mixed
-     */
-    public function getBtw()
+     * Get the value of VAT
+     */ 
+    public function getVAT()
     {
-        return $this->Btw;
+        return $this->VAT;
     }
 
     /**
-     * @param mixed $Btw
-     */
-    public function setBtw($Btw)
+     * Set the value of VAT
+     *
+     * @return  self
+     */ 
+    public function setVAT($VAT)
     {
-        $this->Btw = $Btw;
+        $this->VAT = $VAT;
+
+        return $this;
     }
 
+    /**
+     * Get the value of imageName
+     */ 
+    public function getImageName()
+    {
+        return $this->imageName;
+    }
 
+    /**
+     * Set the value of imageName
+     *
+     * @return  self
+     */ 
+    public function setImageName($imageName)
+    {
+        $this->imageName = $imageName;
+
+        return $this;
+    }
+
+    public function __construct($id, $eventType, $startTime, $endTime, $seats, $price, $VAT, $imageName)
+    {
+        $this->id = $id;
+        $this->eventType = $eventType;
+        $this->startTime = $startTime;
+        $this->endTime = $endTime;
+        $this->seats = $seats;
+        $this->price = $price;
+        $this->VAT = $VAT;
+        $this->imageName = $imageName;
+    }
 }

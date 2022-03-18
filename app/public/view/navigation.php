@@ -15,18 +15,10 @@
     <nav>  
     <div class="wrapper">
       <ul>
-        <li><a href="/Haarlem-Festival-project-term-3/app/public/view/home.php">Home</a></li>
-        <li><a href="/Haarlem-Festival-project-term-3/app/public/view/dance.php">Dance</a></li>
-        <li><a href="food">Food</a></li>
-        <li><a href="history">History</a></li>
-       
-       <?php 
-         echo('<li><a class= "loginposition" href="login">LogIn</a></li>'); //<li><a class= "loginposition" href="login">LogIn</a></li>
-         echo('<li><img class="profile" src="img/default.profile.png" alt="profile" ></li>');// <img class="logo" src="img/default.profile.png" alt="profile" >
-       ?>
-      
-     
-       
+        <li><a href="home.php">Home</a></li>
+        <li><a href="dance.php">Dance</a></li>
+        <li><a href="foodmain.php">Food</a></li>
+        <li><a href="history.php">History</a></li> 
       </ul>
   
     </div>
