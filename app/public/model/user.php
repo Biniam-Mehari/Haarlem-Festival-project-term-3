@@ -8,6 +8,20 @@ class User {
     private string $email;
     private string $password;
     
+
+  function __construct($id, $firstName, $email)
+  {
+      $this->id = $id;
+      $this->firstName = $firstName;
+      $this->email = $email;
+  }
+
+
+
+
+
+
+
     /**
      * Get the value of id
      *

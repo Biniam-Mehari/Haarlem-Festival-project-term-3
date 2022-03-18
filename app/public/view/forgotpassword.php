@@ -15,7 +15,7 @@ require_once 'navigation.php';
 <div class="login-wrap">
 	<div class="login-html">
 	<form name="sign-in.html" method="post" action="signup">
-	<h1>Sign in</h1>
+	<h1>Password forgotten?</h1>
 	<br></br>
 		<div class="login-form">
 				<div class="group">
@@ -23,20 +23,15 @@ require_once 'navigation.php';
 					<input type="text" name="email" id="email" required="_required"/>
 				</div>
 				<div class="group">
-					<label for="pass" class="label">Password</label>
-					<input type="text" name="password" id="password" required="_required"/>
+					<label for="username" class="label">username</label>
+					<input type="text" name="username" id="username" required="_required"/>
 				</div>
 				<div class="group">
-					<input id="check" type="checkbox" class="check" checked>
-					<label for="check"><span class="icon"></span> Keep me Signed in</label>
-				</div>
-				<div class="group">
-					<input type="submit" class="button" value="Sign In">
+					<input type="submit" class="button" value="Send email">
 				</div>
 				<div class="hr"></div>
 				<div class="foot-lnk">
-				<a href="signup">  Make a new account or </a>
-					<a href="#forgot">forgot Password?</a>
+				<a href="login">Return to Login</a>
 				</div>
 </form>
 			</div>

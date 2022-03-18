@@ -6,4 +6,6 @@ class logincontroller
     {
         include __DIR__ . '/../view/login.php';
     }
+
+    
 }

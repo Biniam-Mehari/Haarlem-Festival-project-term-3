@@ -33,7 +33,7 @@
 <div class="container bg-light">
 
     <h1 class="h1 text-center">Jack's Guitarshop</h1>
-    <img src="/img/logo.png" class="img-fluid">
+    <img src="../img/logo.png" class="img-fluid">
 </div>
 </body>
 </html>

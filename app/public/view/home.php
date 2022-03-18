@@ -8,15 +8,15 @@ require_once 'navigation.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="../css/home.css">
     <title>homePage</title>
-    <img class="banner" src="img/bannerHome.png" alt="bannerHome">
+    <img class="banner" src="../img/bannerHome.png" alt="bannerHome">
 </head>
 <body>
 
 <div class="container">
       <div class="image">
-      <img class ="photo" src="img/danceHome.png" alt="bannerHome">
+      <img class ="photo" src="../img/danceHome.png" alt="bannerHome">
       </div>
       <div class="text">
       <h1 style="color:purple;"><u>Dancing in Haarlem</u></h1>
@@ -37,7 +37,7 @@ require_once 'navigation.php';
   
       </div>
       <div class="text">
-      <img class ="photo" src="img/foodHome.png" alt="bannerHome">
+      <img class ="photo" src="../img/foodHome.png" alt="bannerHome">
       </div>
     </div>
 
@@ -45,7 +45,7 @@ require_once 'navigation.php';
 
     <div class="container">
       <div class="image">
-      <img class ="photo" src="img/historyHome.png" alt="bannerHome">
+      <img class ="photo" src="../img/historyHome.png" alt="bannerHome">
       </div>
       <div class="text">
       <h1 style="color:blue;"><u>History in Haarlem</u></h1>
@@ -66,7 +66,7 @@ require_once 'navigation.php';
           <button href="dance" class="button">Explore Jazz ></button>
       </div>
       <div class="text">
-      <img class ="photo" src="img/jazzHome.png" alt="bannerHome">
+      <img class ="photo" src="../img/jazzHome.png" alt="bannerHome">
   
       </div>
     </div>
