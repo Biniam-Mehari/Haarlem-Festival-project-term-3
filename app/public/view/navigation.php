@@ -10,14 +10,14 @@
 </head>
 
 <body>
-  <div class="tasks-navigation">
+  <div class="festival-navigation">
     <div class="navbar">
       <a href="home">
         <img src="../img/HFLogo.png" class="logo">
       </a>
       <ul>
         <li><a href="home">Home</a></li>
-        <li><a href="tasks">Food</a></li>
+        <li><a href="../view/foodmain.php" class="active">Food</a></li>
         <li><a href="about">Dance</a></li>
         <li><a href="signup">History</a></li>
         <li><a href="signup">Signup</a></li>
