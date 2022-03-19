@@ -1,8 +1,29 @@
-.breadcrums {
-    margin-left: 40px;
+.food-banner {
+    position: relative;
+    background-color: black;
+    text-align: center;
 }
 
-.bannerFoodMain {
+.food-banner-image {
+    opacity: 0.40;
     width: 100%;
-    height: 400px;
+    height: 16.875rem;
+}
+
+.food-title {
+    font-size: 3rem;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.food-description {
+    font-size: 1.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
 }
