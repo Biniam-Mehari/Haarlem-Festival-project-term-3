@@ -1,5 +1,6 @@
 <?php
 require_once 'navigation.php';
+require_once '../controller/foodcontroller.php';
 ?>
 
 <!DOCTYPE html>
@@ -23,72 +24,34 @@ require_once 'navigation.php';
         <p class="food-description">Taste some of the most exquisite cuisines that the Haarlem Festival has to offer!</p>
     </section>
 
+    <h1 class="display-title">Visit one of our restaurants</h1>
 
     <section class="restaurants">
         <main class="grid">
+            <?php
+                 $foodService = new FoodController();
+                 $foodEvents = (array)$foodService->GetAllRestaurants();
+                 foreach($foodEvents as $food):
+            ?>
             <article>
-                <img class="restaurant-image" src="../img/foodbanner.png">
+                <img class="restaurant-image" src="../img/<?php echo $food->getEvent()->getImageName() ?>.png">
                 <section class="restaurant-content">
-                    <h2 class="restaurant-header">Restaurant Mr. & Mrs.</h2>
-                    <p class="restaurant-description">Our menu includes the most luxurous starters around all Haarlem. Cold or warm, the choice is yours!</p>
-                    <h1 class="restaurant-cuisine">Dutch, Fish & Seafood, European</h1>
+                    <h2 class="restaurant-header"><?php echo $food->getRestaurantName()?></h2>
+                    <h1 class="restaurant-cuisine"><?php echo $food->getCuisineType()?></h1>
+                    <h3 class="restaurant-address"><?php echo $food->getEvent()->getAddress()?></h3>
                     <section class="restaurant-rating">
+                    <?php for($stars = 0; $stars < $food->getRating(); $stars++) { ?>
                         <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                    <?php } ?>
                     </section>
-                    <strong class="restaurant-price">Price per person: &euro;45</strong>
-                    <button class="reservation-button">Make a reservation</button>
+                    <h3 class="restaurant-seats">Currently <?php echo $food->getEvent()->getSeats()?> seats available</h3>
+                    <strong class="restaurant-price">Price per person: &euro;<?php echo $food->getEvent()->getPrice()?></strong>
+                    <a href="../view/foodreservation.php">
+                    <button class="reservation-button" href="foodreservation.php?id=<?php echo $foodService->GetRestaurantById($food->getEvent()->getId())?>">Make a reservation</button>
+                    </a>
                 </section>
             </article>
-
-            <article>
-                <img class="restaurant-image" src="../img/foodbanner.png">
-                <section class="restaurant-content">
-                    <h2 class="restaurant-header">Restaurant Mr. & Mrs.</h2>
-                    <p class="restaurant-description">Our menu includes the most luxurous starters around all Haarlem. Cold or warm, the choice is yours!</p>
-                    <h1 class="restaurant-cuisine">Dutch, Fish & Seafood, European</h1>
-                    <section class="restaurant-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </section>
-                    <strong class="restaurant-price">Price per person: &euro;45</strong>
-                    <button class="reservation-button">Make a reservation</button>
-                </section>
-            </article>
-
-            <article>
-                <img class="restaurant-image" src="../img/foodbanner.png">
-                <section class="restaurant-content">
-                    <h2 class="restaurant-header">Restaurant Mr. & Mrs.</h2>
-                    <p class="restaurant-description">Our menu includes the most luxurous starters around all Haarlem. Cold or warm, the choice is yours!</p>
-                    <h1 class="restaurant-cuisine">Dutch, Fish & Seafood, European</h1>
-                    <section class="restaurant-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </section>
-                    <strong class="restaurant-price">Price per person: &euro;45</strong>
-                    <button class="reservation-button">Make a reservation</button>
-                </section>
-            </article>
-
-            <article>
-                <img class="restaurant-image" src="../img/foodbanner.png">
-                <section class="restaurant-content">
-                    <h2 class="restaurant-header">Restaurant Mr. & Mrs.</h2>
-                    <p class="restaurant-description">Our menu includes the most luxurous starters around all Haarlem. Cold or warm, the choice is yours!</p>
-                    <h1 class="restaurant-cuisine">Dutch, Fish & Seafood, European</h1>
-                    <h3>This restaurant is rated 4 stras</h3>
-                    <strong class="restaurant-price">Price per person: &euro;45</strong>
-                    <button class="reservation-button">Make a reservation</button>
-                </section>
-            </article>
-
+            <?php endforeach ?>
         </main>
     </section>
 </body>

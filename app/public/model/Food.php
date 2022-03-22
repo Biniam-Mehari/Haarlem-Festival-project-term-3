@@ -1,6 +1,6 @@
 <?php
 
-include_once('./Event.php');
+include_once('../model/event.php');
 class Food {
     private $eventID;
     private $restaurantName;

@@ -172,10 +172,9 @@ class Event
         return $this;
     }
 
-    public function __construct($id, $eventType, $startTime, $endTime, $seats, $price, $VAT, $imageName)
+    public function __construct($id, $startTime, $endTime, $seats, $price, $VAT, $imageName)
     {
         $this->id = $id;
-        $this->eventType = $eventType;
         $this->startTime = $startTime;
         $this->endTime = $endTime;
         $this->seats = $seats;
