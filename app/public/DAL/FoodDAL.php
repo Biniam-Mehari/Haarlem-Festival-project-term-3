@@ -17,27 +17,28 @@ class FoodDAL
 
     public function GetAllRestaurants()
     {
-        $stmt = $this->connection->prepare("SELECT E.startTime, E.endTime , E.price, F.eventID, E.seats, E.imageName, E.vat, F.restaurantName, F.rating, F.description, F.cuisineType, F.address, F.reservationFee FROM Event E INNER JOIN Food F ON E.eventID = F.eventID WHERE E.eventType = 'food' ORDER BY E.startTime ASC");
+        $stmt = $this->connection->prepare("SELECT foodEventID, restaurantName, cuisineType, description, rating, address, startTime, price, seats, reservationFee, duration, sessions, vat, imageName FROM Food ORDER BY foodEventID ASC");
         $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
 
-            $startTime = $row["startTime"];
-            $endTime = $row["endTime"];
-            $price = $row["price"];
-            $eventID = $row["eventID"];
+            $foodEventID = $row["foodEventID"];
             $restaurantName = $row["restaurantName"];
-            $rating = $row["rating"];
-            $description = $row["description"];
-            $imageName = $row["imageName"];
             $cuisineType = $row["cuisineType"];
-            $seats = $row["seats"];
-            $VAT = $row["vat"];
+            $description = $row["description"];
+            $rating = $row["rating"];
             $address = $row["address"];
+            $startTime = $row["startTime"];
+            $price = $row["price"];
+            $seats = $row["seats"];
             $reservationFee = $row["reservationFee"];
+            $duration = $row["duration"];
+            $sessions = $row["sessions"];
+            $VAT = $row["vat"];
+            $imageName = $row["imageName"];
 
-            $event = new Event($eventID, $startTime, $endTime, $seats, $price, $VAT, $imageName);
-            $food = new Food($eventID, $restaurantName, $cuisineType, $description, $rating, $address, $reservationFee, $event);
+            //$event = new Event($eventID, $startTime, $endTime, $seats, $price, $VAT, $imageName);
+            $food = new Food($foodEventID, $restaurantName, $cuisineType, $description, $rating, $address, $startTime, $price, $seats, $reservationFee, $duration, $sessions, $VAT, $imageName);
             $foodEvents[] = $food;
         }
         return $foodEvents;
@@ -45,28 +46,29 @@ class FoodDAL
 
     public function GetRestaurantById($id)
     {
-        $stmt = $this->connection->prepare("SELECT E.startTime, E.endTime , E.price, F.eventID, E.seats, E.imageName, E.vat, F.restaurantName, F.rating, F.description, F.cuisineType, F.address, F.reservationFee FROM Event E INNER JOIN Food F ON E.eventID = F.eventID WHERE E.eventType = 'food' ");
+        $stmt = $this->connection->prepare("SELECT foodEventID, restaurantName, cuisineType, description, rating, address, startTime, price, seats, reservationFee, duration, sessions, vat, imageName FROM Food WHERE foodEventID = ? ORDER BY foodEventID ASC");
         $stmt->bind_param("s", $id);
         $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
 
-            $startTime = $row["startTime"];
-            $endTime = $row["endTime"];
-            $price = $row["price"];
-            $id = $row["eventID"];
+            $foodEventID = $row["foodEventID"];
             $restaurantName = $row["restaurantName"];
-            $rating = $row["rating"];
-            $description = $row["description"];
-            $imageName = $row["imageName"];
             $cuisineType = $row["cuisineType"];
-            $seats = $row["seats"];
-            $VAT = $row["vat"];
+            $description = $row["description"];
+            $rating = $row["rating"];
             $address = $row["address"];
+            $startTime = $row["startTime"];
+            $price = $row["price"];
+            $seats = $row["seats"];
             $reservationFee = $row["reservationFee"];
+            $duration = $row["duration"];
+            $sessions = $row["sessions"];
+            $VAT = $row["vat"];
+            $imageName = $row["imageName"];
 
-            $event = new Event($id, $startTime, $endTime, $seats, $price, $VAT, $imageName);
-            $food = new Food($id, $restaurantName, $cuisineType, $description, $rating, $address, $reservationFee, $event);
+            //$event = new Event($id, $startTime, $endTime, $seats, $price, $VAT, $imageName);
+            $food = new Food($foodEventID, $restaurantName, $cuisineType, $description, $rating, $address, $startTime, $price, $seats, $reservationFee, $duration, $sessions, $VAT, $imageName);
         }
         return $food;
     }
@@ -80,22 +82,23 @@ class FoodDAL
         $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
-            $startTime = $row["startTime"];
-            $endTime = $row["endTime"];
-            $price = $row["price"];
-            $eventID = $row["eventID"];
+            $foodEventID = $row["foodEventID"];
             $restaurantName = $row["restaurantName"];
-            $rating = $row["rating"];
-            $description = $row["description"];
-            $imageName = $row["imageName"];
             $cuisineType = $row["cuisineType"];
-            $seats = $row["seats"];
-            $VAT = $row["vat"];
+            $description = $row["description"];
+            $rating = $row["rating"];
             $address = $row["address"];
+            $startTime = $row["startTime"];
+            $price = $row["price"];
+            $seats = $row["seats"];
             $reservationFee = $row["reservationFee"];
+            $duration = $row["duration"];
+            $sessions = $row["sessions"];
+            $VAT = $row["vat"];
+            $imageName = $row["imageName"];
 
-            $event = new Event($eventID, $startTime, $endTime, $seats, $price, $VAT, $imageName);
-            $food = new Food($eventID, $restaurantName, $cuisineType, $description, $rating, $address, $reservationFee, $event);
+            //$event = new Event($eventID, $startTime, $endTime, $seats, $price, $VAT, $imageName);
+            $food = new Food($foodEventID, $restaurantName, $cuisineType, $description, $rating, $address, $startTime, $price, $seats, $reservationFee, $duration, $sessions, $VAT, $imageName);
         }
         return $food;
     }

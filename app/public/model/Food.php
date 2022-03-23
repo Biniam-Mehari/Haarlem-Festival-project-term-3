@@ -1,39 +1,50 @@
 <?php
 
 include_once('../model/event.php');
-class Food {
-    private $eventID;
+class Food
+{
+    private $foodEventID;
     private $restaurantName;
     private $cuisineType;
     private $description;
     private $rating;
     private $address;
+    private $startTime;
+    private $price;
+    private $seats;
     private $reservationFee;
-    private Event $event;
+    private $duration;
+    private $sessions;
+    private $VAT;
+    private $imageName;
+
+    //private Event $event;
+
+
 
     /**
-     * Get the value of eventID
-     */ 
-    public function getEventID()
+     * Get the value of foodEventID
+     */
+    public function getFoodEventID()
     {
-        return $this->eventID;
+        return $this->foodEventID;
     }
 
     /**
-     * Set the value of eventID
+     * Set the value of foodEventID
      *
      * @return  self
-     */ 
-    public function setEventID($eventID)
+     */
+    public function setFoodEventID($foodEventID)
     {
-        $this->eventID = $eventID;
+        $this->foodEventID = $foodEventID;
 
         return $this;
     }
 
     /**
      * Get the value of restaurantName
-     */ 
+     */
     public function getRestaurantName()
     {
         return $this->restaurantName;
@@ -43,7 +54,7 @@ class Food {
      * Set the value of restaurantName
      *
      * @return  self
-     */ 
+     */
     public function setRestaurantName($restaurantName)
     {
         $this->restaurantName = $restaurantName;
@@ -53,7 +64,7 @@ class Food {
 
     /**
      * Get the value of cuisineType
-     */ 
+     */
     public function getCuisineType()
     {
         return $this->cuisineType;
@@ -63,7 +74,7 @@ class Food {
      * Set the value of cuisineType
      *
      * @return  self
-     */ 
+     */
     public function setCuisineType($cuisineType)
     {
         $this->cuisineType = $cuisineType;
@@ -73,7 +84,7 @@ class Food {
 
     /**
      * Get the value of description
-     */ 
+     */
     public function getDescription()
     {
         return $this->description;
@@ -83,7 +94,7 @@ class Food {
      * Set the value of description
      *
      * @return  self
-     */ 
+     */
     public function setDescription($description)
     {
         $this->description = $description;
@@ -93,7 +104,7 @@ class Food {
 
     /**
      * Get the value of rating
-     */ 
+     */
     public function getRating()
     {
         return $this->rating;
@@ -103,7 +114,7 @@ class Food {
      * Set the value of rating
      *
      * @return  self
-     */ 
+     */
     public function setRating($rating)
     {
         $this->rating = $rating;
@@ -113,7 +124,7 @@ class Food {
 
     /**
      * Get the value of address
-     */ 
+     */
     public function getAddress()
     {
         return $this->address;
@@ -123,7 +134,7 @@ class Food {
      * Set the value of address
      *
      * @return  self
-     */ 
+     */
     public function setAddress($address)
     {
         $this->address = $address;
@@ -133,7 +144,7 @@ class Food {
 
     /**
      * Get the value of reservationFee
-     */ 
+     */
     public function getReservationFee()
     {
         return $this->reservationFee;
@@ -143,7 +154,7 @@ class Food {
      * Set the value of reservationFee
      *
      * @return  self
-     */ 
+     */
     public function setReservationFee($reservationFee)
     {
         $this->reservationFee = $reservationFee;
@@ -151,38 +162,189 @@ class Food {
         return $this;
     }
 
-     /**
-     * @return Event
-     */ 
-    public function getEvent()
+    //  /**
+    //  * @return Event
+    //  */ 
+    // public function getEvent()
+    // {
+    //     return $this->event;
+    // }
+
+    // /**
+    //  * Set the value of event
+    //  *
+    //  * @param Event
+    //  */ 
+    // public function setEvent($event)
+    // {
+    //     $this->event = $event;
+
+    //     return $this;
+    // }
+
+
+
+
+
+
+    /**
+     * Get the value of startTime
+     */
+    public function getStartTime()
     {
-        return $this->event;
+        return $this->startTime;
     }
 
     /**
-     * Set the value of event
+     * Set the value of startTime
      *
-     * @param Event
-     */ 
-    public function setEvent($event)
+     * @return  self
+     */
+    public function setStartTime($startTime)
     {
-        $this->event = $event;
+        $this->startTime = $startTime;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of price
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set the value of price
+     *
+     * @return  self
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of seats
+     */
+    public function getSeats()
+    {
+        return $this->seats;
+    }
+
+    /**
+     * Set the value of seats
+     *
+     * @return  self
+     */
+    public function setSeats($seats)
+    {
+        $this->seats = $seats;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of duration
+     */
+    public function getDuration()
+    {
+        return $this->duration;
+    }
+
+    /**
+     * Set the value of duration
+     *
+     * @return  self
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of sessions
+     */
+    public function getSessions()
+    {
+        return $this->sessions;
+    }
+
+    /**
+     * Set the value of sessions
+     *
+     * @return  self
+     */
+    public function setSessions($sessions)
+    {
+        $this->sessions = $sessions;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of VAT
+     */
+    public function getVAT()
+    {
+        return $this->VAT;
+    }
+
+    /**
+     * Set the value of VAT
+     *
+     * @return  self
+     */
+    public function setVAT($VAT)
+    {
+        $this->VAT = $VAT;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of imageName
+     */
+    public function getImageName()
+    {
+        return $this->imageName;
+    }
+
+    /**
+     * Set the value of imageName
+     *
+     * @return  self
+     */
+    public function setImageName($imageName)
+    {
+        $this->imageName = $imageName;
 
         return $this;
     }
 
 
-
-    function __construct($eventID, $restaurantName, $cuisineType, $description, $rating, $address, $reservationFee, $event)
+    function __construct($foodEventID, $restaurantName, $cuisineType, $description, $rating, $address, $startTime, $price, $seats, $reservationFee, $duration, $sessions, $VAT, $imageName)
     {
-        $this->eventID = $eventID;
+        $this->foodEventID = $foodEventID;
         $this->restaurantName = $restaurantName;
         $this->cuisineType = $cuisineType;
         $this->description = $description;
         $this->rating = $rating;
         $this->address = $address;
+        $this->startTime = $startTime;
+        $this->price = $price;
+        $this->seats = $seats;
         $this->reservationFee = $reservationFee;
-        $this->event = $event;
+        $this->duration = $duration;
+        $this->sessions = $sessions;
+        $this->VAT = $VAT;
+        $this->imageName = $imageName;
     }
+
 
 }

@@ -93,7 +93,7 @@ body {
     font-size: 1.2rem;
 }
 
-.restaurant-description {
+.restaurant-address {
     margin-top: 10px;
     font-size: 1.2rem;
     color: grey;
@@ -104,6 +104,11 @@ body {
     margin-bottom: 10px;
     font-size: 1.7rem;
     color: peru;
+}
+
+.restaurant-seats {
+    font-size: 1.2rem;
+    color: green;
 }
 
 .reservation-button {
@@ -121,6 +126,7 @@ body {
 }
 
 .restaurant-price {
+    margin-top: 10px;
     font-size: 1.5rem;
 }
 
