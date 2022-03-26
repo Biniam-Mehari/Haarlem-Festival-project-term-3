@@ -38,7 +38,7 @@ require_once '../controller/foodcontroller.php';
                 <section class="restaurant-content">
                     <h2 class="restaurant-header"><?php echo $restaurant->getRestaurantName()?></h2>
                     <h1 class="restaurant-cuisine"><?php echo $restaurant->getCuisineType()?></h1>
-                    <h3 class="restaurant-address"><?php echo $restaurant->getStreetName() . $restaurant->getHouseNumber() . $restaurant->getPostalCode() . $restaurant->getCity()?></h3>
+                    <h3 class="restaurant-address"><?php echo $restaurant->getStreetName() . "," . $restaurant->getHouseNumber() . "," . $restaurant->getPostalCode() . "," . $restaurant->getCity()?></h3>
                     <section class="restaurant-rating">
                     <?php for($stars = 0; $stars < $restaurant->getRating(); $stars++) { ?>
                         <i class="fas fa-star"></i>
@@ -46,7 +46,7 @@ require_once '../controller/foodcontroller.php';
                     </section>
                     <h3 class="restaurant-seats">Currently <?php echo $restaurant->getSeats()?> seats available</h3>
                     <strong class="restaurant-price">Price per person: &euro;<?php echo $restaurant->getPrice()?></strong>
-                    <a href="../view/foodreservation.php?foodEventID=<?php echo $restaurant->getRestaurantID()?>">
+                    <a href="../view/foodreservation.php?restaurantID=<?php echo $restaurant->getRestaurantID()?>">
                     <button class="reservation-button">Make a reservation</button>
                     </a>
                 </section>

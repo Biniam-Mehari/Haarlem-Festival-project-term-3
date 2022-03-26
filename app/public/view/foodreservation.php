@@ -3,9 +3,9 @@ require_once 'navigation.php';
 require_once '../controller/foodcontroller.php';
 
 $foodService = new FoodController();
-$restaurantID = $_GET['foodEventID'];
+$restaurantID = $_GET['restaurantID'];
 
-$restaurantInfo = $foodService->GetRestaurantById($restaurantID);
+$foodInfo = $foodService->GetRestaurantById($restaurantID);
 
 ?>
 
@@ -24,13 +24,13 @@ $restaurantInfo = $foodService->GetRestaurantById($restaurantID);
     <section class="resturant-more-information">
         <section class="container">
             <section class="content">
-                <h1 class="restaurant-name"><?php echo $restaurantInfo->getRestaurantName() ?></h1>
-                <h3 class="restaurant-address"><?php echo $restaurantInfo->getAddress() ?></h3>
-                <p class="restaurant-description"><?php echo $restaurantInfo->getDescription() ?></p>
-                <strong class="restaurant-fee">A reservation fee of &euro;<?php echo $restaurantInfo->getReservationFee() ?> per person will be charged when a reservation is made on our website. This fee will be deducted from the final check on visiting the restaurant</strong>
+                <h1 class="restaurant-name"><?php echo $foodInfo->getRestaurant()->getRestaurantName() ?></h1>
+                <h3 class="restaurant-address"><?php echo $foodInfo->getRestaurant()->getStreetName() ?></h3>
+                <p class="restaurant-description"><?php echo $foodInfo->getRestaurant()->getRestaurantDescription() ?></p>
+                <strong class="restaurant-fee">A reservation fee of &euro;<?php echo $foodInfo->getReservationFee() ?> per person will be charged when a reservation is made on our website. This fee will be deducted from the final check on visiting the restaurant</strong>
             </section>
             <section class="image-section">
-                <img class="restaurant-image" src="../img/<?php echo $restaurantInfo->getImageName() ?>.png">
+                <img class="restaurant-image" src="../img/<?php echo $foodInfo->getRestaurant()->getImageName() ?>.png">
             </section>
         </section>
     </section>
@@ -39,12 +39,12 @@ $restaurantInfo = $foodService->GetRestaurantById($restaurantID);
     <br>
 
     <?php
-    $sessions = $restaurantInfo->getSessions();
-    $startDateTime = $restaurantInfo->getStartTime();
-    $durationPlus = $restaurantInfo->getDuration() * 60;
-    $startTime = strtotime($startDateTime);
-    $dayDuration = 60 * 60 * 24;
-
+    $sessions = $foodInfo->getSessions();
+    $startDate = $foodInfo->getStartDate();
+    $startTime = $foodInfo->getStartTime();
+    $durationPlus = $foodInfo->getDuration() * 60;
+    $startTimeFormat = strtotime($startTime);
+    $startDateFormat = strtotime($startDate);
     ?>
 
     <section class="restaurant-booking">
@@ -53,18 +53,29 @@ $restaurantInfo = $foodService->GetRestaurantById($restaurantID);
     <section class="restaurant-reservation">
         <form action="" method="post" class="form-container">
             <div class="main-form">
-                <form action="index.php" method="get">
+                <form action="index.php" method="post">
                     <div>
-                        <span>Date and Time:</span>
+                        <span>Date:</span>
                         <select name="people" id="people" required>
-                            <?php for ($day = 0; $day < 4; $day++) {
-                                for ($session = 0; $session < $sessions; $session++) {
-                                    $time = (($session * $durationPlus) + $startTime) + ($day * $dayDuration);
-                                    $sessionTimes = date('d-m H:i', $time);
-                                    ?>
-                                    <option value="<?php echo $restaurantInfo->getStartTime() ?>"><?php echo $sessionTimes ?></option>
-                                    <?php }
-                            }?>
+                            <?php
+                            for ($date = 0; $date < $foodInfo->getFoodEventID(); $date++) {
+                                $sessionDate = $date + $startDateFormat;
+                                $sessionDates = date('d-m', $sessionDate);
+                            ?>
+                                <option value="<?php echo $foodInfo->getStartDate() ?>"><?php echo $sessionDates ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div>
+                        <span>Time:</span>
+                        <select name="people" id="people" required>
+                            <?php
+                            for ($session = 0; $session < $sessions; $session++) {
+                                $time = (($session * $durationPlus) + $startTimeFormat);
+                                $sessionTimes = date('H:i', $time);
+                            ?>
+                                <option value="<?php echo $foodInfo->getStartTime() ?>"><?php echo $sessionTimes ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div>

@@ -5,7 +5,7 @@ class Restaurant
     private $restaurantID;
     private $restaurantName;
     private $cuisineType;
-    private $description;
+    private $restaurantDescription;
     private $streetName;
     private $houseNumber;
     private $postalCode;
@@ -15,12 +15,12 @@ class Restaurant
     private $price;
     private $imageName;
 
-    function __construct($restaurantID, $restaurantName, $cuisineType, $description, $streetName, $houseNumber, $postalCode, $city, $seats, $rating, $price, $imageName)
+    function __construct($restaurantID, $restaurantName, $cuisineType, $restaurantDescription, $streetName, $houseNumber, $postalCode, $city, $seats, $rating, $price, $imageName)
     {
         $this->restaurantID = $restaurantID;
         $this->restaurantName = $restaurantName;
         $this->cuisineType = $cuisineType;
-        $this->description = $description;
+        $this->restaurantDescription = $restaurantDescription;
         $this->streetName = $streetName;
         $this->houseNumber = $houseNumber;
         $this->postalCode = $postalCode;
@@ -91,25 +91,6 @@ class Restaurant
         return $this;
     }
 
-    /**
-     * Get the value of description
-     */ 
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Set the value of description
-     *
-     * @return  self
-     */ 
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
 
     /**
      * Get the value of streetName
@@ -267,6 +248,26 @@ class Restaurant
     public function setSeats($seats)
     {
         $this->seats = $seats;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of restaurantDescription
+     */ 
+    public function getRestaurantDescription()
+    {
+        return $this->restaurantDescription;
+    }
+
+    /**
+     * Set the value of restaurantDescription
+     *
+     * @return  self
+     */ 
+    public function setRestaurantDescription($restaurantDescription)
+    {
+        $this->restaurantDescription = $restaurantDescription;
 
         return $this;
     }

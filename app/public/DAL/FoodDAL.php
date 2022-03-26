@@ -44,7 +44,7 @@ class FoodDAL
 
     public function GetRestaurantById($id)
     {
-        $stmt = $this->connection->prepare("SELECT F.foodEventID, F.restaurantID, F.startDate, F.startTime, F.foodDescription, F.reservationFee, F.duration, F.sessions, F.vat, R.restaurantID, R.restaurantName, R.cuisineType, R.restaurantDescription, R.streetName, R.houseNumber, R.postalCode, R.city, R.seats, R.rating, R.price, R.imageName FROM Restaurant R INNER JOIN Food F ON R.restaurantID = F.restaurantID WHERE R.restaurantID = ? ORDER BY R.restaurantID ASC");
+        $stmt = $this->connection->prepare("SELECT R.restaurantID, R.restaurantName, R.cuisineType, R.restaurantDescription, R.streetName, R.houseNumber, R.postalCode, R.city, R.seats, R.rating, R.price, R.imageName, F.foodEventID, F.restaurantID, F.startDate, F.startTime, F.foodDescription, F.reservationFee, F.duration, F.sessions, F.vat FROM Restaurant R INNER JOIN Food F ON R.restaurantID = F.restaurantID WHERE R.restaurantID = ? ORDER BY F.startDate ASC");
         $stmt->bind_param("s", $id);
         $stmt->execute();
         $result = $stmt->get_result();
