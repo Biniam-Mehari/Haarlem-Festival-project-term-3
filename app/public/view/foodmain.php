@@ -30,23 +30,23 @@ require_once '../controller/foodcontroller.php';
         <main class="grid">
             <?php
                  $foodService = new FoodController();
-                 $foodEvents = (array)$foodService->GetAllRestaurants();
-                 foreach($foodEvents as $food):
+                 $restaurants = (array)$foodService->GetAllRestaurants();
+                 foreach($restaurants as $restaurant):
             ?>
             <article>
-                <img class="restaurant-image" src="../img/<?php echo $food->getImageName() ?>.png">
+                <img class="restaurant-image" src="../img/<?php echo $restaurant->getImageName() ?>.png">
                 <section class="restaurant-content">
-                    <h2 class="restaurant-header"><?php echo $food->getRestaurantName()?></h2>
-                    <h1 class="restaurant-cuisine"><?php echo $food->getCuisineType()?></h1>
-                    <h3 class="restaurant-address"><?php echo $food->getAddress()?></h3>
+                    <h2 class="restaurant-header"><?php echo $restaurant->getRestaurantName()?></h2>
+                    <h1 class="restaurant-cuisine"><?php echo $restaurant->getCuisineType()?></h1>
+                    <h3 class="restaurant-address"><?php echo $restaurant->getStreetName() . $restaurant->getHouseNumber() . $restaurant->getPostalCode() . $restaurant->getCity()?></h3>
                     <section class="restaurant-rating">
-                    <?php for($stars = 0; $stars < $food->getRating(); $stars++) { ?>
+                    <?php for($stars = 0; $stars < $restaurant->getRating(); $stars++) { ?>
                         <i class="fas fa-star"></i>
                     <?php } ?>
                     </section>
-                    <h3 class="restaurant-seats">Currently <?php echo $food->getSeats()?> seats available</h3>
-                    <strong class="restaurant-price">Price per person: &euro;<?php echo $food->getPrice()?></strong>
-                    <a href="../view/foodreservation.php?foodEventID=<?php echo $food->getFoodEventID()?>">
+                    <h3 class="restaurant-seats">Currently <?php echo $restaurant->getSeats()?> seats available</h3>
+                    <strong class="restaurant-price">Price per person: &euro;<?php echo $restaurant->getPrice()?></strong>
+                    <a href="../view/foodreservation.php?foodEventID=<?php echo $restaurant->getRestaurantID()?>">
                     <button class="reservation-button">Make a reservation</button>
                     </a>
                 </section>

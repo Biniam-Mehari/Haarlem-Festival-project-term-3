@@ -20,8 +20,6 @@ class User {
 
 
 
-
-
     /**
      * Get the value of id
      *

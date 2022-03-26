@@ -30,14 +30,14 @@ class FoodController {
         }
     }
 
-    public function GetReceipt($restaurantName, $startTime, $endTime) {
-        try {
-            return $this->foodService->GetReceipt($restaurantName, $startTime, $endTime);
-        }
-        catch(Exception $e) {
-            echo 'You have an exception: ',  $e->getMessage(), "\n";
-        }
-    }
+    // public function GetReceipt($restaurantName, $startTime, $endTime) {
+    //     try {
+    //         return $this->foodService->GetReceipt($restaurantName, $startTime, $endTime);
+    //     }
+    //     catch(Exception $e) {
+    //         echo 'You have an exception: ',  $e->getMessage(), "\n";
+    //     }
+    // }
 
 
 }

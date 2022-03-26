@@ -1,4 +1,4 @@
-<?php
+                                                                                                                                                                                                                                                                                                                    <?php
  define('DB_HOST', 'sql11.freemysqlhosting.net');
  define('DB_USER', 'sql11475581');
  define('DB_PASSWORD', 'dpwGMnERcq');
