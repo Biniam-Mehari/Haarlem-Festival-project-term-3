@@ -29,8 +29,8 @@ require_once '../controller/foodcontroller.php';
     <section class="restaurants">
         <main class="grid">
             <?php
-                 $foodService = new FoodController();
-                 $restaurants = (array)$foodService->GetAllRestaurants();
+                 $restaurantService = new RestaurantController();
+                 $restaurants = (array)$restaurantService->GetAllRestaurants();
                  foreach($restaurants as $restaurant):
             ?>
             <article>
@@ -44,7 +44,7 @@ require_once '../controller/foodcontroller.php';
                         <i class="fas fa-star"></i>
                     <?php } ?>
                     </section>
-                    <h3 class="restaurant-seats">Currently <?php echo $restaurant->getSeats()?> seats available</h3>
+                    <h3 class="restaurant-seats">Restaurant contains <?php echo $restaurant->getSeats()?> seats</h3>
                     <strong class="restaurant-price">Price per person: &euro;<?php echo $restaurant->getPrice()?></strong>
                     <a href="../view/foodreservation.php?restaurantID=<?php echo $restaurant->getRestaurantID()?>">
                     <button class="reservation-button">Make a reservation</button>
