@@ -7,12 +7,21 @@ class Session {
     private $sessionDescription;
     private $reservationFee;
     private $duration;
-    private $seats;
+    private $capacity;
     private $restaurant;
 
 
+    public function __construct()
+    {
+        $get_arguments = func_get_args();
+        $number_of_arguments = func_num_args();
 
-    public function __construct($sessionID, $startDate, $startTime, $sessionDescription, $reservationFee, $duration, $seats, $restaurant)
+        if (method_exists($this, $method_name = '__construct' . $number_of_arguments)) {
+            call_user_func_array(array($this, $method_name), $get_arguments);
+        }
+    }
+
+    public function __construct8($sessionID, $startDate, $startTime, $sessionDescription, $reservationFee, $duration, $capacity, $restaurant)
     {
         $this->sessionID = $sessionID;
         $this->startDate = $startDate;
@@ -20,8 +29,13 @@ class Session {
         $this->sessionDescription = $sessionDescription;
         $this->reservationFee = $reservationFee;
         $this->duration = $duration;
-        $this->seats = $seats;
+        $this->capacity = $capacity;
         $this->restaurant = $restaurant;
+    }
+
+    public function __construct2($restaurant, $startDate) {
+        $this->restaurant = $restaurant;
+        $this->startDate = $startDate;
     }
 
     /**
@@ -180,6 +194,26 @@ class Session {
     public function setRestaurant($restaurant)
     {
         $this->restaurant = $restaurant;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of capacity
+     */ 
+    public function getCapacity()
+    {
+        return $this->capacity;
+    }
+
+    /**
+     * Set the value of capacity
+     *
+     * @return  self
+     */ 
+    public function setCapacity($capacity)
+    {
+        $this->capacity = $capacity;
 
         return $this;
     }

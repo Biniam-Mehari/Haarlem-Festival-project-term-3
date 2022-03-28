@@ -1,6 +1,6 @@
 <?php
 
-require_once('../DAL/Restaurant.php');
+require_once('../DAL/RestaurantDAL.php');
 
 class RestaurantController {
 

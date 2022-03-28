@@ -1,6 +1,6 @@
 <?php
 require_once 'navigation.php';
-require_once '../controller/foodcontroller.php';
+require_once '../controller/restaurantcontroller.php';
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +38,7 @@ require_once '../controller/foodcontroller.php';
                 <section class="restaurant-content">
                     <h2 class="restaurant-header"><?php echo $restaurant->getRestaurantName()?></h2>
                     <h1 class="restaurant-cuisine"><?php echo $restaurant->getCuisineType()?></h1>
-                    <h3 class="restaurant-address"><?php echo $restaurant->getStreetName() . "," . $restaurant->getHouseNumber() . "," . $restaurant->getPostalCode() . "," . $restaurant->getCity()?></h3>
+                    <h3 class="restaurant-address"><?php echo $restaurant->getStreetName() . ", " . $restaurant->getHouseNumber() . ", " . $restaurant->getPostalCode() . ", " . $restaurant->getCity()?></h3>
                     <section class="restaurant-rating">
                     <?php for($stars = 0; $stars < $restaurant->getRating(); $stars++) { ?>
                         <i class="fas fa-star"></i>

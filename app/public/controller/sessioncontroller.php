@@ -1,6 +1,6 @@
 <?php
 
-require_once('../DAL/Session.php');
+require_once('../DAL/SessionDAL.php');
 
 class SessionController {
 
@@ -14,6 +14,15 @@ class SessionController {
     public function GetSessionByRestaurantID($id) {
         try {
             return $this->sessionService->GetSessionByRestaurantID($id);
+        }
+        catch(Exception $e) {
+            echo 'You have an exception: ',  $e->getMessage(), "\n";
+        }
+    }
+
+    public function GetSessionDateByRestaurantID($id) {
+        try {
+            return $this->sessionService->GetSessionDateByRestaurantID($id);
         }
         catch(Exception $e) {
             echo 'You have an exception: ',  $e->getMessage(), "\n";

@@ -38,15 +38,6 @@ $sessionInfo = $sessionService->GetSessionByRestaurantID($restaurantID);
     <br>
     <br>
 
-    <?php
-    $sessions = $sessionInfo->getSessions();
-    $startDate = $sessionInfo->getStartDate();
-    $startTime = $sessionInfo->getStartTime();
-    $durationPlus = $sessionInfo->getDuration() * 60;
-    $startTimeFormat = strtotime($startTime);
-    $startDateFormat = strtotime($startDate);
-    ?>
-
     <section class="restaurant-booking">
         <h1>Book your table</h1>
     </section>
@@ -58,24 +49,18 @@ $sessionInfo = $sessionService->GetSessionByRestaurantID($restaurantID);
                         <span>Date:</span>
                         <select name="people" id="people" required>
                             <?php
-                            for ($date = 0; $date < $sessionInfo->getFoodEventID(); $date++) {
-                                $sessionDate = $date + $startDateFormat;
-                                $sessionDates = date('d-m', $sessionDate);
+                            $sessionDateForRestaurant = $sessionService->GetSessionDateByRestaurantID($restaurantID);
+                            $startDate = $sessionDateForRestaurant->getStartDate();
+                            $startDateFormat = strtotime($startDate);
+                            $sessionDates = date('d-m', $startDateFormat);
                             ?>
-                                <option value="<?php echo $sessionInfo->getStartDate() ?>"><?php echo $sessionDates ?></option>
-                            <?php } ?>
+                            <option value="<?php echo $sessionDateForRestaurant->getStartDate() ?>"><?php echo $sessionDates ?></option>
                         </select>
                     </div>
                     <div>
                         <span>Time:</span>
                         <select name="people" id="people" required>
-                            <?php
-                            for ($session = 0; $session < $sessions; $session++) {
-                                $time = (($session * $durationPlus) + $startTimeFormat);
-                                $sessionTimes = date('H:i', $time);
-                            ?>
-                                <option value="<?php echo $sessionInfo->getStartTime() ?>"><?php echo $sessionTimes ?></option>
-                            <?php } ?>
+
                         </select>
                     </div>
                     <div>

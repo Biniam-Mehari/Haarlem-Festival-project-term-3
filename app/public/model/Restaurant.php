@@ -1,7 +1,6 @@
 <?php
 class Restaurant
 {
-
     private $restaurantID;
     private $restaurantName;
     private $cuisineType;
@@ -15,7 +14,17 @@ class Restaurant
     private $price;
     private $imageName;
 
-    function __construct($restaurantID, $restaurantName, $cuisineType, $restaurantDescription, $streetName, $houseNumber, $postalCode, $city, $seats, $rating, $price, $imageName)
+
+    public function __construct()
+    {
+        $get_arguments = func_get_args();
+        $number_of_arguments = func_num_args();
+
+        if (method_exists($this, $method_name = '__construct' . $number_of_arguments)) {
+            call_user_func_array(array($this, $method_name), $get_arguments);
+        }
+    }
+    function __construct12($restaurantID, $restaurantName, $cuisineType, $restaurantDescription, $streetName, $houseNumber, $postalCode, $city, $seats, $rating, $price, $imageName)
     {
         $this->restaurantID = $restaurantID;
         $this->restaurantName = $restaurantName;
@@ -29,6 +38,11 @@ class Restaurant
         $this->rating = $rating;
         $this->price = $price;
         $this->imageName = $imageName;
+    }
+
+    function __construct1($restaurantID)
+    {
+        $this->restaurantID = $restaurantID;
     }
 
     /**
