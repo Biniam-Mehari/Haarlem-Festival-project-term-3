@@ -10,7 +10,6 @@ class Session {
     private $capacity;
     private $restaurant;
 
-
     public function __construct()
     {
         $get_arguments = func_get_args();
@@ -37,6 +36,13 @@ class Session {
         $this->restaurant = $restaurant;
         $this->startDate = $startDate;
     }
+
+    public function __construct3($restaurant, $startTime, $duration) {
+        $this->restaurant = $restaurant;
+        $this->startTime = $startTime;
+        $this->duration = $duration;
+    }
+
 
     /**
      * Get the value of sessionID

@@ -28,4 +28,13 @@ class SessionController {
             echo 'You have an exception: ',  $e->getMessage(), "\n";
         }
     }
+
+    public function GetSessionTimeByRestaurantID($id) {
+        try {
+            return $this->sessionService->GetSessionTimeByRestaurantID($id);
+        }
+        catch(Exception $e) {
+            echo 'You have an exception: ',  $e->getMessage(), "\n";
+        }
+    }
 }

@@ -64,7 +64,27 @@ class SessionDAL
   
             $restaurant = new Restaurant($restaurantID);
             $session = new Session($restaurant, $startDate);
+            $allSessions[] = $session;
         }
-        return $session;
+        return $allSessions;
+    }
+
+    public function GetSessionTimeByRestaurantID($id)
+    {
+        $stmt = $this->connection->prepare("SELECT DISTINCT startTime, restaurantID, duration FROM Session WHERE restaurantID = ? ORDER BY startTime ASC");
+        $stmt->bind_param("s", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+
+            $restaurantID = $row["restaurantID"];
+            $startTime = $row["startTime"];
+            $duration = $row["duration"]; // because i cant have a const with the same amount of params as another one
+  
+            $restaurant = new Restaurant($restaurantID);
+            $session = new Session($restaurant, $startTime, $duration);
+            $allSessions[] = $session;
+        }
+        return $allSessions;
     }
 }
