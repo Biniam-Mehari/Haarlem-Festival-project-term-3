@@ -29,8 +29,6 @@ require_once '../controller/restaurantcontroller.php';
     <section class="restaurants">
         <main class="grid">
             <?php
-                 $restaurantService = new RestaurantController();
-                 $restaurants = (array)$restaurantService->GetAllRestaurants();
                  foreach($restaurants as $restaurant):
             ?>
             <article>
