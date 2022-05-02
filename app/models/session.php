@@ -1,5 +1,7 @@
 <?php
 
+namespace Models;
+
 class Session {
     public $sessionID;
     public $startDate;
@@ -8,5 +10,4 @@ class Session {
     public $reservationFee;
     public $duration;
     public $ticketsSold;
-    public $restaurant;
 }

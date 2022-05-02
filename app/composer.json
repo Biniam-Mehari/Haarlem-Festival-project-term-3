@@ -1,0 +1,18 @@
+
+{
+    "require": {
+        "phpmailer/phpmailer": "^6.6",
+        "mollie/mollie-api-php": "2.0",
+        "endroid/qr-code": "^4.4",
+        "knplabs/knp-snappy": "^1.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Routers\\": "routers",
+            "Controllers\\": "controllers",
+            "Services\\": "services",
+            "Repositories\\": "repositories",
+            "Models\\": "models"
+        }
+    }
+}

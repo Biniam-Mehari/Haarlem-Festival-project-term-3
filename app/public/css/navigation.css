@@ -58,7 +58,7 @@
     cursor: pointer;
   }
 
-  .NavigationBar a.active {
+  .festival-navigation a.active {
     color: red;
 }
 
