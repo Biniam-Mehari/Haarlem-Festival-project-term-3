@@ -55,62 +55,20 @@ require_once __DIR__ . '/../components/navigation.php';
             </select>
         </section>
 
-        <script>
-            function configureDropDownLists(selectDate, selectTime) {
-
-                var teams = ['Square', 'Circle', 'Triangle'];
-                var names = ['John', 'David', 'Sarah'];
-
-                switch (ddl1.value) {
-                    case 'Colours':
-                        ddl2.options.length = 0;
-                        for (i = 0; i < menubars.length; i++) {
-                            createOption(ddl2, menubars[i], menubars[i]);
-                        }
-                        break;
-                    case 'Shapes':
-                        ddl2.options.length = 0;
-                        for (i = 0; i < teams.length; i++) {
-                            createOption(ddl2, teams[i], teams[i]);
-                        }
-                        break;
-                    case 'Names':
-                        ddl2.options.length = 0;
-                        for (i = 0; i < names.length; i++) {
-                            createOption(ddl2, names[i], names[i]);
-                        }
-                        break;
-                    default:
-                        ddl2.options.length = 0;
-                        break;
-                }
-
-            }
-
-            function createOption(ddl, text, value) {
-                var opt = document.createElement('option');
-                opt.value = value;
-                opt.text = text;
-                ddl.options.add(opt);
-            }
-        </script>
         <br>
         <section class="w3-bar">
             <label for="time" style="display: flex; font-size: 30px;">Choose session time:</label>
             <select class="w3-select" id="selectTime" style="width: 30%; background-color: lavender;" name="time" id="time" required>
-                <!-- <option value="" disabled selected place>Choose your session time</option>
+                <option value="" disabled selected place>Choose your session time</option>
                     <?php
-                    //foreach($restaurantTimeForSessions as $sessionTime):
-                    //$startTimeFormat = date('H:i', strtotime($sessionTime->startTime));
-                    //$startTime = $sessionTime->startTime;
-                    //$duration = $sessionTime->duration;
-                    //$endTime = date("H:i", strtotime($startTime) + strtotime($duration) + strtotime('00:00:00'));
-
-
+                    foreach($restaurantTimeForSessions as $sessionTime):
+                    $startTimeFormat = date('H:i', strtotime($sessionTime->startTime));
+                    $startTime = $sessionTime->startTime;
+                    $duration = $sessionTime->duration;
+                    $endTime = date("H:i", strtotime($startTime) + strtotime($duration) + strtotime('00:00:00'));
                     ?>
                      <option value="<?php echo $sessionTime->startTime ?>"><?php echo $startTimeFormat ?> - <?php echo $endTime; ?></option>
-                     <?php //endforeach 
-                        ?> -->
+                     <?php endforeach ?>
             </select>
         </section>
         <br>
@@ -120,7 +78,7 @@ require_once __DIR__ . '/../components/navigation.php';
         </div>
         <div>
             <label for="nrOfChildren" style="font-size: 18px;">Number of children: </label>
-            <input class="w3-input" type="time" style="width:30%;" name="childAmount" min="0" max="10" id="children" placeholder="Enter number of children..." required>
+            <input class="w3-input" type="number" style="width:30%;" name="childAmount" min="0" max="10" id="children" placeholder="Enter number of children..." required>
         </div>
 
         <br>

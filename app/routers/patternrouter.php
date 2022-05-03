@@ -10,7 +10,7 @@ class PatternRouter {
     }
     public function route($uri) {
 
-        $defaultController = 'home';
+        $defaultController = 'food';
         $defaultMethod = 'index';
 
         $uri = $this->stripParameters($uri);
