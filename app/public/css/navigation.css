@@ -1,64 +1,61 @@
 * {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-  }
-  
-  
-  .festival-navigation {
-    background-color:darkcyan;
-    background-size: cover;
-    background-position: center;
-  }
-  
-  .navbar {
-      width: 85%;
-      margin: auto;
-      padding: 35px 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-  }
-
-  .navbar a.active {
-    color: yellow;
+  margin: 0;
+  padding: 0;
 }
-  
-  .navbar ul li {
-    list-style: none;
-    display: inline-block;
-    margin: 0 20px;
-    position: relative;
-    font-size: 16px;
-  }
-  
-  .navbar ul li a {
-    text-decoration: none;
-    color: white;
-    text-transform:uppercase;
-  }
-  
-  .navbar ul li::after {
-    content:'';
-    height: 3px;
-    width: 0;
-    background: #d8e619;
-    position: absolute;
-    left: 0;
-    bottom: -10px;
-    transition: 0.5s;
-  }
-  
-  .navbar ul li:hover::after {
-    width: 100%;
-  }
-  
-  .logo {
-    width: 120px;
-    cursor: pointer;
-  }
-
-  .festival-navigation a.active {
-    color: red;
+body{
+  background-color: #FCE4D2;
 }
 
+nav{
+  width: 100%;
+  height: 50px;
+  background-color: #0052B4;
+  
+}
+
+ul{
+  margin-left: 20px ;
+}
+
+ul li{
+  list-style: none;
+  display: inline-block;
+
+  line-height: 10px;
+}
+
+ul li a{
+  display: block;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #f5efef;
+  padding: 0 20px !important;
+}
+
+ul li a:hover{
+  color: rgb(8, 8, 8);
+}
+.logo{
+  width: 200px;
+}
+.loginposition{
+  padding: 0 0 10px 1000px;
+}
+.logincolor{
+  color: #FF7320;
+ 
+}
+.container{
+  padding-top: 20px;
+}
+.profile{
+  width: 50px !important;
+  height: 50px !important;
+  margin-left: 10px;
+}
+
+.space{
+ display: inline-block;
+ padding-right: 50px;
+}
