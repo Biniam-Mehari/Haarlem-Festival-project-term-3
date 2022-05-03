@@ -1,23 +1,17 @@
 <?php
 
 namespace Repositories;
-use PDO;
-use PDOException;
 
-class Repository {
+use DB;
 
-    protected $connection;
+require __DIR__ . '../../db.php';
 
-    function __construct() {
+class Repository
+{
+    protected DB $connection;
 
-        require __DIR__ . '../../db.php';
-
-        try {
-            $this->connection = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
-
-            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // change pdo mode to exception
-        } catch(PDOException $e) {
-            echo "Connection to the database has failed: " . $e->getMessage();
-        }
+    public function __construct()
+    {
+        $this->connection = DB::getInstance();
     }
 }
