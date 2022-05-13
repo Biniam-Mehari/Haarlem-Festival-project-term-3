@@ -76,7 +76,7 @@ class DanceRepository extends Repository
 
     public function GetDanceInformationByID($id) {
         try {
-            $stmt = $this->connection->prepare("SELECT d.specialguest, d.eventSession,d.duration,d.capacity,d.price,d.vat,d.date,d.startTime,d.imageId,v.venueName,v.adress,v.houseNumber,v.postCode,v.city,v.description,v.imageID,a.artistName,a.style,a.youtube,a.instaGram,a.tikTok,a.faceBook,a.description,a.imageId FROM Dance AS d INNER JOIN Artist AS a ON d.artistId = a.artistId INNER JOIN Venue AS v ON d.venueId = v.venueId WHERE eventId = :eventId");
+            $stmt = $this->connection->prepare("SELECT d.specialguest, d.eventSession,d.duration,d.capacity,d.price,d.vat,d.date,d.startTime,d.imageId,v.venueName,v.adress,v.houseNumber,v.postCode,v.city,v.venueDescription,v.imageID,a.artistName,a.style,a.youtube,a.instaGram,a.tikTok,a.faceBook,a.artistDescription,a.imageId FROM Dance AS d INNER JOIN Artist AS a ON d.artistId = a.artistId INNER JOIN Venue AS v ON d.venueId = v.venueId WHERE eventId = :eventId");
 
             $stmt->execute(["eventId" => $id]);
 
@@ -121,7 +121,7 @@ class DanceRepository extends Repository
 
                 $artist->setFacebook($row["faceBook"]);
 
-                $artist->setDescription($row["description"]);
+                $artist->setDescription($row["artistDescription"]);
 
                 $artist->setImage_id($row["imageId"]);
                 
@@ -136,7 +136,7 @@ class DanceRepository extends Repository
 
                 $venue->setCity($row["city"]);
 
-                $venue->setDescription($row["description"]);
+                $venue->setDescription($row["venueDescription"]);
 
                 $venue->setImage_id($row["imageID"]);
 

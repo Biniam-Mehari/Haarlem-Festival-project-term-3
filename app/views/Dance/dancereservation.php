@@ -27,65 +27,76 @@ require_once __DIR__ . '/../components/navigation.php'
 
 
 
-
-  <div class="row">
-    <div class="col-6">
-      <h2 class="display-title"><?php echo $event->Venue->getVenueName() ?></h2>
-      <h4 class=""><?php echo $event->Venue->getDescription() ?></h4>
-      <img class="restaurant-image" src="/img/Afrojack.jpg">
-      <br>
-      <label> General information</label>
-      <h3 class="restaurant-address">Location: <?php echo $event->Venue->getAdress()  . " " . $event->Venue->getHousenumber() . ", " . $event->Venue->getPostcode() . ", " . $event->Venue->getCity() ?></h3>
-      <strong class="restaurant-price">Price: &euro;<?php echo $event->getPrice() ?></strong>
-      <h3 class="restaurant-seats">Date <?php echo $event->getDate() . " " . $event->getStartTime() ?></h3>
-      <h2 class>Artist: <?php echo $event->Artist->getArtistName() ?></h2>
-      <h3 class="restaurant-seats">Session: <?php echo $event->getSession()?></h3>
-<br>
-
-<label>Contact</label>
-
-
-    </div>
-
-
-
-    <div class="col-6">
-      <h2 class="display-title"><?php echo $event->Artist->getArtistName() ?></h2>
-      <h4 class=""><?php echo $event->Artist->getDescription() ?></h4>
-      <img class="restaurant-image" src="/img/Afrojack.jpg">
-      <br>
-      <label class=>Style: <?php echo $event->Artist->getStyle() ?></label>
-      <br>
-      <labe>Social media</label>
+  <div class="container-sm">
+    <div class="row">
+      <div class="col-6">
+        <h2 class="display-title"><?php echo $event->Venue->getVenueName() ?></h2>
+        <h4 class=""><?php echo $event->Venue->getDescription() ?></h4>
+        <img class="restaurant-image" src="/img/Afrojack.jpg">
         <br>
-        <a href=<?php echo $event->Artist->getFacebook() ?>>
-          <img class="socialMediaIcons" src="/img/socialMediaIcons/faceBook.png">
-        </a>
-        <a href=<?php echo $event->Artist->getTicTok() ?>>
-          <img class="socialMediaIcons" src="/img/socialMediaIcons/tikTok.png">
-        </a>
-        <a href=<?php echo $event->Artist->getInstagram() ?>>
-          <img class="socialMediaIcons" src="/img/socialMediaIcons/instaGram.png">
-        </a>
-        <a href=<?php echo $event->Artist->getYouTube() ?>>
-          <img class="socialMediaIcons" src="/img/socialMediaIcons/youTube.png">
-        </a>
-        <br>
-        <br>
+        <label> General information</label>
+        <h3 class="restaurant-address">Location: <?php echo $event->Venue->getAdress()  . " " . $event->Venue->getHousenumber() . ", " . $event->Venue->getPostcode() . ", " . $event->Venue->getCity() ?></h3>
+        <strong class="restaurant-price">Price: &euro;<?php echo $event->getPrice() ?></strong>
+        <h3 class="restaurant-seats">Date <?php echo $event->getDate() . " " . $event->getStartTime() ?></h3>
+        <h2 class>Artist: <?php echo $event->Artist->getArtistName() ?></h2>
+        <h3 class="restaurant-seats">Session: <?php echo $event->getSession() ?></h3>
         <br>
 
-        <button onclick="clicked(-1)">Deleting - </button>
-        <span id="test">--</span>
-        <button onclick="clicked(1)"> Adding +</button>
-        <script type="text/javascript">
-          var i = 0;
+      </div>
 
-          function clicked(n) {
-            var test = document.getElementById("test");
+
+
+      <div class="col-6">
+        <h2 class="display-title"><?php echo $event->Artist->getArtistName() ?></h2>
+        <h4 class=""><?php echo $event->Artist->getDescription() ?></h4>
+        <img class="restaurant-image" src="/img/Afrojack.jpg">
+        <br>
+        <label class=>Style: <?php echo $event->Artist->getStyle() ?></label>
+        <br>
+        <labe>Social media</label>
+          <br>
+          <a href=<?php echo $event->Artist->getFacebook() ?>>
+            <img class="socialMediaIcons" src="/img/socialMediaIcons/faceBook.png">
+          </a>
+          <a href=<?php echo $event->Artist->getTicTok() ?>>
+            <img class="socialMediaIcons" src="/img/socialMediaIcons/tikTok.png">
+          </a>
+          <a href=<?php echo $event->Artist->getInstagram() ?>>
+            <img class="socialMediaIcons" src="/img/socialMediaIcons/instaGram.png">
+          </a>
+          <a href=<?php echo $event->Artist->getYouTube() ?>>
+            <img class="socialMediaIcons" src="/img/socialMediaIcons/youTube.png">
+          </a>
+          <br>
+          <br>
+          <br>
+
+          <div class="btn-group" role="group" aria-label="...">
+            <button font-size="100px" onclick="clicked(-1)">-</button>
+            <input id="test" value="1"></input>
+            <button onclick="clicked(1)">+</button>
+
+          </div>
+          <br>
+          <br>
+          <button type="button" class="btn btn-success">Book a ticket</button>
+
+      </div>
+
+      <script type="text/javascript">
+        var i = 1;
+
+        function clicked(n) {
+          //var test = document.getElementById("test");
+          const number = document.getElementById("test").value;
+          if (number >= 1) {
             i = i + n;
-            test.innerHTML = i;
-          };
-        </script>
+            document.getElementById("test").value = i;
+          }
+
+        };
+      </script>
+
 
 
 
