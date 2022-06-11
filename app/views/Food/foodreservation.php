@@ -41,6 +41,7 @@ require_once __DIR__ . '/../components/navigation.php';
 
     <h1 style="text-align: center;">Book your table</h1>
     <form class="w3-section w3-container" action="index.php" method="post" id="form">
+    <h1 id="restaurantID" hidden><?php echo $resInfo->restaurantID ?></h1>
         <section class="w3-bar">
             <label for="date" style="display: flex; font-size: 30px;">Choose session date:</label>
             <select class="w3-select" style="width: 30%;" name="date" id="selectDate" style="background-color:lavender;" required>

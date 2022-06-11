@@ -23,6 +23,7 @@ class FoodController
 
     public function foodreservation()
     {
+        $restaurantID = $_GET['restaurantID'];
         $restaurantInformation = $this->foodService->GetRestaurantInformationByID($_GET['restaurantID']);
         $sessionInformation = $this->foodService->GetSessionInformationByRestaurantID($_GET['restaurantID']);
         $restaurantDateForSessions = $this->foodService->GetSessionsDateByRestaurantID($_GET['restaurantID']);

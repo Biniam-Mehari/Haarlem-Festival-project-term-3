@@ -1,5 +1,6 @@
 <?php
 namespace Routers;
+session_start();
 use Exception;
 class PatternRouter {
     private function stripParameters($uri) {
