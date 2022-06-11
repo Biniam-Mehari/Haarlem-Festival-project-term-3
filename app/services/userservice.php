@@ -17,4 +17,8 @@ class UserService {
         return $this->userRepository->login();
     }
 
+    public function signup() {
+        return $this->userRepository->register();
+    }
+
 }

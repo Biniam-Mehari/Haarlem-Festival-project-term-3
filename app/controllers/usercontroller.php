@@ -33,8 +33,7 @@ class UserController
     }
 
     public function signup() {
-        //$signup = $this->userService->register();
-        require __DIR__ . '../../views/signup.php';
+        $signup = $this->userService->signup();
     }
 
 }

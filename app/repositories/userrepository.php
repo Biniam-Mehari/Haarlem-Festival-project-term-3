@@ -53,45 +53,43 @@ class UserRepository extends Repository
             if (isset($_POST['username']) || isset($_POST['email'])) {
 
                 $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
-                
-                $firstName = $_POST['firstName'];
-                $lastName = $_POST['lastName'];
-                $username = $_POST['username'];
-                $email = $_POST['email'];
-                $password = $_POST['password'];
-                $telephoneNumber = $_POST['telephoneNumber'];
 
-                $checkEmail = $this->connection->prepare("SELECT * User WHERE email = :email");
-                $checkEmail->execute(["email", $email]);
-
-                $checkUsername = $this->connection->prepare("SELECT * User WHERE username = :username");
-                $checkUsername->execute(["username", $username]);
+                 $username = $_POST['username'];
+                 $email = $_POST['email'];
+                 $password = $_POST['password'];
 
 
-                if ($checkEmail->rowCount() > 0) {
-                    echo '<script>alert("The email is already exists!")</script>';
-                    echo "<script>location.assign('/user/signupview')</script>";
-                    return;
-                }
+                // $checkEmail = $this->connection->prepare("SELECT * `User` WHERE email = :email");
+                // $checkEmail->execute(["email", $email]);
 
-                if ($checkUsername->rowCount() > 0) {
-                    echo '<script>alert("The username is already exists!")</script>';
-                    echo "<script>location.assign('/user/signupview')</script>";
-                    return;
-                }
+                // $checkUsername = $this->connection->prepare("SELECT * `User` WHERE username = :username");
+                // $checkUsername->execute(["username", $username]);
+
+
+                // if ($checkEmail->rowCount() > 0) {
+                //     echo '<script>alert("The email is already exists!")</script>';
+                //     echo "<script>location.assign('/user/signupview')</script>";
+                //     return;
+                // }
+
+                // if ($checkUsername->rowCount() > 0) {
+                //     echo '<script>alert("The username is already exists!")</script>';
+                //     echo "<script>location.assign('/user/signupview')</script>";
+                //     return;
+                // }
 
                 $userDetails = array(
-                    'firstName' => $firstName,
-                    'lastName' => $lastName,
-                    'username' => $username,
-                    'email' => $email,
+                    'firstName' => $_POST['firstName'],
+                    'lastName' => $_POST['lastName'],
+                    'username' => $_POST['username'],
+                    'email' => $_POST['email'],
                     'password' => $password,
-                    'telephoneNumber' => $telephoneNumber,
-                    'role' => "User"
+                    'telephoneNumber' => $_POST['telephoneNumber'],
+                    'role' => 1
                 );
 
                 $this->createUser($userDetails);
-                header("location: /users/loginview");
+                echo "<script>location.assign('/user/loginview')</script>";
             }
             else {
                 echo '<script>alert("You have been caught!")</script>';
@@ -104,10 +102,10 @@ class UserRepository extends Repository
     public function createUser($userDetails)
     {
         try {
-            $createUser = $this->connection->prepare("INSERT INTO User (firstName, lastName, username, email, `password`, telephoneNumber, `role`) VALUES (:firstName, :lastName, :username, :email, :password, :telephoneNumber, :role)");
+            $createUser = $this->connection->prepare("INSERT INTO `User` (firstName, lastName, username, email, `password`, telephoneNumber, `roleID`) VALUES (:firstName, :lastName, :username, :email, :password, :telephoneNumber, :roleID)");
             $createUser->execute(["firstName" => $userDetails['firstName'], "lastName" => $userDetails['lastName'],
              "username" => $userDetails['username'], "email" => $userDetails['email'], "password" => $userDetails['password'],
-              "telephoneNumber" => $userDetails['telephoneNumber'], "role" => $userDetails['role']]);
+              "telephoneNumber" => $userDetails['telephoneNumber'], "roleID" => $userDetails['role']]);
         } catch (PDOException $e) {
             echo $e->getMessage();
         }

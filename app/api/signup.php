@@ -4,7 +4,7 @@ $fetchData = file_get_contents("php://input");
 
 if (isset($_POST['email'])) {
 
-    require_once('../../db.php');
+    require_once('../db.php');
     $connection = DB::getInstance();
 
     $username = $_POST['username'];
