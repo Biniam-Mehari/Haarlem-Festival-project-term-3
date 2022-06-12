@@ -13,7 +13,7 @@ loginForm.onsubmit = (form) => {
     }
 
     let formData = new FormData(loginForm);
-    fetch("api/login.php", {
+    fetch("../api/login.php", {
         method: 'POST',
         body: formData
     }).then(response => response.text()).then(loginStatus => {
@@ -29,13 +29,13 @@ loginForm.onsubmit = (form) => {
         }
     });
 
-    
     window.onload = function () {
-        var recaptcha = document.forms.loginForm["g-recaptcha-response"];
+        var recaptcha = document.forms.signupForm["g-recaptcha-response"];
         recaptcha.required = true;
         recaptcha.oninvalid = function (e) {
     
             alert("Please complete the Captcha");
         }
     }
+
 }

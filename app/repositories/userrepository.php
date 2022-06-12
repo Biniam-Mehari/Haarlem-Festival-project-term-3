@@ -27,6 +27,7 @@ class UserRepository extends Repository
                 $login->execute(["email" => $email, "password" => $password]);
                 $login->setFetchMode(PDO::FETCH_CLASS, 'Models\\User');
 
+                
                 if ($login->rowCount() > 0) {
                     $user = $login->fetchObject();
                     session_start();
@@ -54,36 +55,33 @@ class UserRepository extends Repository
 
                 $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
 
-                 $username = $_POST['username'];
-                 $email = $_POST['email'];
-                 $password = $_POST['password'];
+                $username = $_POST['username'];
+                $email = $_POST['email'];
 
 
-                // $checkEmail = $this->connection->prepare("SELECT * `User` WHERE email = :email");
-                // $checkEmail->execute(["email", $email]);
+                $checkUsername = $this->connection->prepare("SELECT * FROM User WHERE username = :username");
+                $checkUsername->execute(["username" => $username]);
 
-                // $checkUsername = $this->connection->prepare("SELECT * `User` WHERE username = :username");
-                // $checkUsername->execute(["username", $username]);
+                $checkEmail = $this->connection->prepare("SELECT * FROM User WHERE username = :username");
+                $checkEmail->execute(["email" => $email]);
 
 
-                // if ($checkEmail->rowCount() > 0) {
-                //     echo '<script>alert("The email is already exists!")</script>';
-                //     echo "<script>location.assign('/user/signupview')</script>";
-                //     return;
-                // }
+                if ($checkUsername->rowCount() > 0) {
+                    echo '<script>alert("This username already exists! Please enter a proper username.")</script>';
+                    return;
+                }
 
-                // if ($checkUsername->rowCount() > 0) {
-                //     echo '<script>alert("The username is already exists!")</script>';
-                //     echo "<script>location.assign('/user/signupview')</script>";
-                //     return;
-                // }
+                if ($checkEmail->rowCount() > 0) {
+                    echo '<script>alert("This email already exists! Please enter a proper email.")</script>';
+                    return;
+                }
 
                 $userDetails = array(
                     'firstName' => $_POST['firstName'],
                     'lastName' => $_POST['lastName'],
                     'username' => $_POST['username'],
                     'email' => $_POST['email'],
-                    'password' => $password,
+                    'password' => $_POST['password'],
                     'telephoneNumber' => $_POST['telephoneNumber'],
                     'role' => 1
                 );

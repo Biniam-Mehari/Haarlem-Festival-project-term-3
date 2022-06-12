@@ -3,6 +3,7 @@
 namespace Repositories;
 
 use DB;
+use PDOException;
 
 require __DIR__ . '../../db.php';
 
@@ -12,6 +13,11 @@ class Repository
 
     public function __construct()
     {
-        $this->connection = DB::getInstance();
+        try {
+            $this->connection = DB::getInstance();
+        }
+        catch(PDOException $e) {
+            echo "Connection to the database has failed: " + $e->getMessage();
+        }
     }
 }

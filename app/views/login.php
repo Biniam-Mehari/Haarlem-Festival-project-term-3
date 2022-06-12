@@ -7,9 +7,7 @@ require_once __DIR__ . '/components/navigation.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/foodmain.css">
     <title>Login</title>
 </head>
@@ -17,6 +15,7 @@ require_once __DIR__ . '/components/navigation.php';
 <body>
     <section class="container mt-5 p-5 col-10 col-md-6 col-lg-4 col-xl-3" style="background-color: white;">
         <div class="container mt-3">
+            <section id="error-message-login" style="margin-top: 10px;"></section> 
             <label class="h3 mb-3 fw-normal ">Please sign in</label>
             <form action="/user/login" method="post" id="login-form">
                 <div class="form-outline mb-4">
@@ -33,9 +32,8 @@ require_once __DIR__ . '/components/navigation.php';
                     <p>Not a member? <a href="/user/signupview">Register</a></p>
                 </div>
             </form>
-            <section id="error-message-login" style="margin-top: 10px;"></section> 
         </div>
     </section>
-    <script src="../js/login.js"></script>
+    <script src="/js/login.js"></script>
     <script src="https://www.google.com/recaptcha/api.js"></script>
 </body>
