@@ -13,7 +13,7 @@ loginForm.onsubmit = (form) => {
     }
 
     let formData = new FormData(loginForm);
-    fetch("../api/login.php", {
+    fetch("/user/checkLogin", {
         method: 'POST',
         body: formData
     }).then(response => response.text()).then(loginStatus => {

@@ -67,6 +67,10 @@ class ComposerStaticInita8ee288c172f6c4e16b703004fe7731b
         array (
             'BaconQrCode\\' => 12,
         ),
+        'A' => 
+        array (
+            'ApiControllers\\' => 15,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -149,6 +153,10 @@ class ComposerStaticInita8ee288c172f6c4e16b703004fe7731b
         'BaconQrCode\\' => 
         array (
             0 => __DIR__ . '/..' . '/bacon/bacon-qr-code/src',
+        ),
+        'ApiControllers\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/api/controllers',
         ),
     );
 

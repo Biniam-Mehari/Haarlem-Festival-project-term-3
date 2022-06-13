@@ -25,7 +25,7 @@
 
           <?php
           if (isset($_SESSION['user'])) {
-            echo ('<li><a class= "loginposition" href="/user/loginview">Logout</a></li>');
+            echo ('<li><a class= "loginposition" href="/user/logout">Logout</a></li>');
           }
           else {
             echo ('<li><a class= "loginposition" href="/user/loginview">Login</a></li>');

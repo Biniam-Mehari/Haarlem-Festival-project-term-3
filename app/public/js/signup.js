@@ -13,7 +13,7 @@ signupForm.onsubmit = (form) => {
     }
 
     let formData = new FormData(signupForm);
-    fetch("../api/signup.php", {
+    fetch("/user/checkValidEmailOrUsername", {
         method: 'POST',
         body: formData
     }).then(response => response.text()).then(signupStatus => {

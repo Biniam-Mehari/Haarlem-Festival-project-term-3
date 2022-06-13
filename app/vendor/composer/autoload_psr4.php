@@ -26,4 +26,5 @@ return array(
     'DASPRiD\\Enum\\' => array($vendorDir . '/dasprid/enum/src'),
     'Controllers\\' => array($baseDir . '/controllers'),
     'BaconQrCode\\' => array($vendorDir . '/bacon/bacon-qr-code/src'),
+    'ApiControllers\\' => array($baseDir . '/api/controllers'),
 );

@@ -30,7 +30,6 @@ class UserRepository extends Repository
                 
                 if ($login->rowCount() > 0) {
                     $user = $login->fetchObject();
-                    session_start();
                     $_SESSION["user"] = $user;
                     echo "<script>location.assign('/food')</script>";
                 } else {
@@ -108,6 +107,60 @@ class UserRepository extends Repository
             echo $e->getMessage();
         }
     }
+
+
+    // methods for javascript
+
+    public function checkLogin($email, $password) {
+        try {
+            $login =  $this->connection->prepare("SELECT * FROM `User` WHERE password = :password AND email = :email");
+            $login->execute(["password" => $password, "email" => $email]);
+
+            if ($login->rowCount() <= 0) {
+                return false;
+            }
+            
+            return true;
+
+        } catch(PDOException $e) {
+            $e->getMessage();
+        }
+    }
+
+    public function checkValidEmail($email) {
+        try {
+            $checkEmail =  $this->connection->prepare("SELECT * FROM `User` WHERE email = :email");
+            $checkEmail->execute(["email" => $email]);
+
+            if ($checkEmail->rowCount() > 0) {
+                return false;
+            }
+
+            return true;
+
+        } catch(PDOException $e) {
+            $e->getMEssage();
+        }
+    }
+
+    public function checkValidUsername($username) {
+        try {
+            $checkUsername =  $this->connection->prepare("SELECT * FROM `User` WHERE username = :username");
+            $checkUsername->execute(["username" => $username]);
+
+            if ($checkUsername->rowCount() > 0) {
+                return false;
+            }
+
+            return true;
+
+        } catch(PDOException $e) {
+            $e->getMEssage();
+        }
+    }
+
+
+    // find a use for these
 
     public function hashPassword($password)
     {

@@ -20,10 +20,13 @@ class PatternRouter {
             $explodedUri[0] = $defaultController;
         }
         $controllerName = "Controllers\\" . $explodedUri[0] . "controller";
+
         if(!isset($explodedUri[1]) || empty($explodedUri[1])) {
             $explodedUri[1] = $defaultMethod;
         }
         $methodName = $explodedUri[1];
+    
+        
         try {         
             $controllerObj = new $controllerName();
             $controllerObj->$methodName();

@@ -12,7 +12,8 @@
             "Controllers\\": "controllers",
             "Services\\": "services",
             "Repositories\\": "repositories",
-            "Models\\": "models"
+            "Models\\": "models",
+            "ApiControllers\\": "api/controllers"
         }
     }
 }
