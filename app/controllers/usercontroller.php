@@ -4,8 +4,9 @@ namespace Controllers;
 
 use Services\UserService;
 
-$fetchData = file_get_contents("php://input");
+$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
 
+$fetchData = file_get_contents("php://input"); // check later
 
 class UserController
 {

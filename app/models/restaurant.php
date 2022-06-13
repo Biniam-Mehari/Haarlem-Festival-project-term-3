@@ -16,4 +16,5 @@ class Restaurant
     public $rating;
     public $price;
     public $imageName;
+    public $reservationFee;
 }

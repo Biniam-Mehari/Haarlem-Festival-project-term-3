@@ -7,7 +7,6 @@ class Session {
     public $startDate;
     public $startTime;
     public $sessionDescription;
-    public $reservationFee;
     public $duration;
     public $ticketsSold;
 }

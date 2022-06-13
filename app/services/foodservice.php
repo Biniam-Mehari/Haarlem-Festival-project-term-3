@@ -21,9 +21,9 @@ class FoodService {
         return $this->foodRepository->GetRestaurantInformationByID($id);
     }
 
-    public function GetSessionInformationByRestaurantID($id) {
-        return $this->foodRepository->GetSessionInformationByRestaurantID($id);
-    }
+    // public function GetSessionInformationByRestaurantID($id) {
+    //     return $this->foodRepository->GetSessionInformationByRestaurantID($id);
+    // }
 
     public function GetSessionsByRestaurantID($id) {
         return $this->foodRepository->GetSessionsByRestaurantID($id);

@@ -13,7 +13,7 @@ class FoodRepository extends Repository {
     
     public function GetAllRestaurantInformation() {
         try {
-            $stmt = $this->connection->prepare("SELECT restaurantID, restaurantName, cuisineType, restaurantDescription, streetName, houseNumber, postalCode, city, seats, rating, price, imageName FROM Restaurant ORDER BY restaurantID ASC");
+            $stmt = $this->connection->prepare("SELECT restaurantID, restaurantName, cuisineType, restaurantDescription, streetName, houseNumber, postalCode, city, seats, rating, price, imageName, reservationFee FROM Restaurant ORDER BY restaurantID ASC");
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\Restaurant');
 
@@ -25,12 +25,12 @@ class FoodRepository extends Repository {
 
     public function GetRestaurantInformationByID($id) {
         try {
-            $stmt = $this->connection->prepare("SELECT restaurantID, restaurantName, cuisineType, restaurantDescription, streetName, houseNumber, postalCode, city, seats, rating, price, imageName FROM Restaurant WHERE restaurantID = :restaurantID");
+            $stmt = $this->connection->prepare("SELECT restaurantID, restaurantName, cuisineType, restaurantDescription, streetName, houseNumber, postalCode, city, seats, rating, price, imageName, reservationFee FROM Restaurant WHERE restaurantID = :restaurantID");
             $stmt->bindParam(":restaurantID", $id);
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\Restaurant');
     
-            return $stmt->fetchAll();
+            return $stmt->fetchObject();
         } catch(PDOException $e) {
             echo "Could not retrieve information from the database for the Restaurant" . $e->getMessage();
         }
@@ -40,7 +40,7 @@ class FoodRepository extends Repository {
     public function GetSessionsByRestaurantID($id)
     {
         try {
-            $stmt = $this->connection->prepare("SELECT DISTINCT R.restaurantID, R.restaurantName, R.cuisineType, R.restaurantDescription, R.streetName, R.houseNumber, R.postalCode, R.city, R.rating, R.seats, R.price, R.imageName, S.restaurantID, S.startDate, S.startTime, S.sessionDescription, S.reservationFee, S.duration, S.ticketsSold FROM Restaurant R INNER JOIN Session S ON R.restaurantID = S.restaurantID WHERE R.restaurantID = :restaurantID ORDER BY S.startDate ASC");
+            $stmt = $this->connection->prepare("SELECT DISTINCT R.restaurantID, R.restaurantName, R.cuisineType, R.restaurantDescription, R.streetName, R.houseNumber, R.postalCode, R.city, R.rating, R.seats, R.price, R.imageName, S.restaurantID, S.startDate, S.startTime, S.sessionDescription, R.reservationFee, S.duration, S.ticketsSold FROM Restaurant R INNER JOIN Session S ON R.restaurantID = S.restaurantID WHERE R.restaurantID = :restaurantID ORDER BY S.startDate ASC");
             $stmt->bindParam(":restaurantID", $id);
             $stmt->execute();
             $sessions = array();
@@ -59,10 +59,10 @@ class FoodRepository extends Repository {
                 $restaurant->seats = $row['seats'];
                 $restaurant->price = $row['price'];
                 $restaurant->imageName = $row['imageName'];
+                $restaurant->reservationFee = $row['reservationFee'];
                 $session->startDate = $row['startDate'];
                 $session->startTime = $row['startTime'];
                 $session->sessionDescription = $row['sessionDescription'];
-                $session->reservationFee = $row['reservationFee'];
                 $session->duration = $row['duration'];
                 $session->ticketsSold = $row['ticketsSold'];
 
@@ -90,20 +90,6 @@ class FoodRepository extends Repository {
         }
     }
 
-    public function GetSessionInformationByRestaurantID($id)
-    {
-        try {
-            $stmt = $this->connection->prepare("SELECT DISTINCT sessionDescription, reservationFee FROM `Session` WHERE restaurantID = :restaurantID");
-            $stmt->bindParam(":restaurantID", $id);
-            $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\Session');
-
-            return $stmt->fetchAll();
-        } catch (PDOException $e) {
-            echo "Could not retrieve information from the database for the Session" . $e->getMessage();
-        }
-    }
-
 
     public function GetSessionsTimeByRestaurantID($id)
     {
@@ -118,4 +104,19 @@ class FoodRepository extends Repository {
             echo "Could not retrieve information from the database for the Session" . $e->getMessage();
         }
     }
+
+
+    // public function GetSessionInformationByRestaurantID($id)
+    // {
+    //     try {
+    //         $stmt = $this->connection->prepare("SELECT DISTINCT sessionDescription, reservationFee FROM `Session` WHERE restaurantID = :restaurantID");
+    //         $stmt->bindParam(":restaurantID", $id);
+    //         $stmt->execute();
+    //         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\Session');
+
+    //         return $stmt->fetchAll();
+    //     } catch (PDOException $e) {
+    //         echo "Could not retrieve information from the database for the Session" . $e->getMessage();
+    //     }
+    // }
 }

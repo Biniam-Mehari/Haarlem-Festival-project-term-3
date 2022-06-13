@@ -25,7 +25,7 @@ class FoodController
     {
         $restaurantID = $_GET['restaurantID'];
         $restaurantInformation = $this->foodService->GetRestaurantInformationByID($_GET['restaurantID']);
-        $sessionInformation = $this->foodService->GetSessionInformationByRestaurantID($_GET['restaurantID']);
+        // $sessionInformation = $this->foodService->GetSessionInformationByRestaurantID($_GET['restaurantID']);
         $restaurantDateForSessions = $this->foodService->GetSessionsDateByRestaurantID($_GET['restaurantID']);
         $restaurantTimeForSessions = $this->foodService->GetSessionsTimeByRestaurantID($_GET['restaurantID']);
         require __DIR__ . '../../views/Food/foodreservation.php';
