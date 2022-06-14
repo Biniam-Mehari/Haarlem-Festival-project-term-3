@@ -1,11 +1,11 @@
 let loginForm = document.getElementById("login-form");
 loginForm.onsubmit = (form) => {
-    if (localStorage.getItem("CanLogin") == "Yes") {
-        localStorage.removeItem("CanLogin");
+    if (localStorage.getItem("loginSuccess") == "Yes") {
+        localStorage.removeItem("loginSuccess");
         return true;
     }
-    else if (localStorage.getItem("CanLogin") == "No") {
-        localStorage.removeItem("CanLogin");
+    else if (localStorage.getItem("loginSuccess") == "No") {
+        localStorage.removeItem("loginSuccess");
         form.preventDefault();
     }
     else {
@@ -20,11 +20,11 @@ loginForm.onsubmit = (form) => {
         loginStatus = JSON.parse(loginStatus);
 
         if (loginStatus.result === true) {
-            localStorage.setItem("CanLogin", "Yes");
+            localStorage.setItem("loginSuccess", "Yes");
             document.getElementById("login-button").click();
         }
         else {
-            localStorage.setItem("CanLogin", "No")
+            localStorage.setItem("loginSuccess", "No")
             document.getElementById("error-message-login").innerHTML = loginStatus.result;
         }
     });

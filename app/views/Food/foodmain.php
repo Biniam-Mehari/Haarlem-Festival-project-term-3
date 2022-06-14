@@ -31,7 +31,7 @@ require_once __DIR__ . '/../components/navigation.php'
                  foreach($restaurants as $restaurant):
             ?>
             <article>
-                <img class="restaurant-image" src="../img/<?php echo $restaurant->imageName ?>.png">
+                <img class="restaurant-image" src="/img/<?php echo $restaurant->imageName ?>.png">
                 <section class="restaurant-content">
                     <h2 class="restaurant-header"><?php echo $restaurant->restaurantName ?></h2>
                     <h1 class="restaurant-cuisine"><?php echo $restaurant->cuisineType ?></h1>
@@ -43,7 +43,7 @@ require_once __DIR__ . '/../components/navigation.php'
                     </section>
                     <h3 class="restaurant-seats">Restaurant contains <?php echo $restaurant->seats ?> seats</h3>
                     <strong class="restaurant-price">Price per person: &euro;<?php echo $restaurant->price ?></strong>
-                    <a href="food/foodreservation?restaurantID=<?php echo $restaurant->restaurantID?>">
+                    <a href="/food/foodreservation?restaurantID=<?php echo $restaurant->restaurantID?>">
                     <button class="reservation-button">Make a reservation</button>
                     </a>
                 </section>

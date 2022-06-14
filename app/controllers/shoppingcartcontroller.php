@@ -19,28 +19,48 @@ class ShoppingCartController
 
     public function index()
     {
-        require __DIR__ . '../../views/Food/foodmain.php';
+        if (!isset($_SESSION['reservations'])) {
+            $_SESSION['reservations'] = array();
+        }
+
+        $totalAmount = 0;
+        $totalEvents = 0;
+
+        foreach($_SESSION['reservations'] as $event) {
+            $totalAmount += $event['totalPrice'];
+            $totalEvents++;
+        }
+
+ 
+
+        require __DIR__ . '../../views/cart.php';
+ 
     }
 
-    public function insertReservationToCart() {
+
+
+
+    public function addToCart() {
+        unset($_SESSION['reservations']);
+
         if (isset($_POST['reservationFood'])) {
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
-
-            if (!isset($_SESSION['user'])) {
-                echo "<script>location.assign('/user/loginview')</script>";
-            }
 
             if (!isset($_SESSION['reservations'])) {
                 $_SESSION['reservations'] = array();
             }
 
-
-            $restaurantID = $_GET['restaurantID'];
+            $type = 'Food';
+            $restaurantID = $_POST['restaurantID'];
+            $restaurantName = $_POST['restaurantName'];
+            $address = $_POST['address'];
+            $image = $_POST['image'];
+            $reservationFee = $_POST['reservationFee'];
             $adultAmount = $_POST['adultAmount'];
             $childAmount = $_POST['childAmount'];
             $reservationDate = $_POST['reservationDate'];
             $reservationTime = $_POST['reservationTime'];
-            $sessionDateTime = $reservationDate . "," . $reservationTime;
+            //$sessionDateTime = $reservationDate . "," . $reservationTime;
             $quantity = $adultAmount + $childAmount;
 
             if (isset($_POST['reservationComment'])) {
@@ -50,13 +70,19 @@ class ShoppingCartController
                 $reservationComment = "No comment";
             }
 
+            $totalPrice = $quantity * $reservationFee;
 
-            $reservation = array('id' => $restaurantID, 'adultAmount' => $adultAmount, 'childAmount' => $childAmount, 'datetime' => $sessionDateTime, 'reservationComment' => $reservationComment);
+            $reservation = array('restaurantID' => $restaurantID, 'restaurantName' => $restaurantName, 'quantity' => $quantity, 'date' => $reservationDate, 'time' => $reservationTime, 'reservationComment' => $reservationComment, 'totalPrice' => $totalPrice, 'address' => $address, 'type' => $type, 'image' => $image);
 
             array_push($_SESSION['reservations'], $reservation);
 
-            echo "<script>location.assign('/user/food')</script>";
+            $this->index();
+
+            //var_dump($_SESSION['reservations']);
+
         }
+
+        
     }
 
 }

@@ -105,6 +105,21 @@ class FoodRepository extends Repository {
         }
     }
 
+    public function GetSessionTimesByDateAndRestaurantID($startDate, $id) {
+        try {
+            $stmt = $this->connection->prepare("SELECT DISTINCT startTime FROM `Session` WHERE startDate = :startDate AND restaurantID = :restaurantID ORDER BY startTime ASC");
+            $stmt->bindParam(":startDate", $startDate);
+            $stmt->bindParam(":restaurantID", $id);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\Session');
+
+            return $stmt->fetchAll();
+        }  catch(PDOException $e) {
+            $e->getMessage();
+        }
+    } 
+
+ 
 
     // public function GetSessionInformationByRestaurantID($id)
     // {

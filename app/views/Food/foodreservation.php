@@ -36,9 +36,13 @@ require_once __DIR__ . '/../components/navigation.php';
     <hr style="border: none; background-color: black; height: 3px; ">
 
     <h1 style="text-align: center;">Book your table</h1>
-    <form class="w3-section w3-container" action="/cart/insertReservation" method="post" id="form">
-        <h1 id="restaurantID" hidden><?php echo $restaurantInformation->restaurantID ?></h1>
+    <form class="w3-section w3-container" action="/shoppingcart/addToCart" method="post" id="form">
         <section class="w3-bar">
+            <input name="restaurantID" value="<?php echo $restaurantInformation->restaurantID ?>" hidden>
+            <input name="address" value="<?php echo $restaurantInformation->streetName . ", " . $restaurantInformation->houseNumber . ", " . $restaurantInformation->postalCode . ", " . $restaurantInformation->city ?>" hidden>
+            <input name="reservationFee" value="<?php echo $restaurantInformation->reservationFee ?>" hidden>
+            <input name="restaurantName" value="<?php echo $restaurantInformation->restaurantName ?>" hidden>
+            <input name="image" value="<?php echo $restaurantInformation->imageName ?>" hidden>
             <label for="date" style="display: flex; font-size: 30px;">Choose session date:</label>
             <select class="w3-select" style="width: 30%;" name="reservationDate" id="selectDate" style="background-color:lavender;" required>
                 <option value="" disabled selected place>Choose your date</option>

@@ -36,4 +36,8 @@ class FoodService {
     public function GetSessionsTimeByRestaurantID($id) {
         return $this->foodRepository->GetSessionsTimeByRestaurantID($id);
     }
+
+    public function GetSessionTimesByDateAndRestaurantID($startDate, $id) {
+        return $this->foodRepository->GetSessionTimesByDateAndRestaurantID($startDate, $id);
+    }
 }

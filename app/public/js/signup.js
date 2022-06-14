@@ -1,11 +1,11 @@
 let signupForm = document.getElementById("signup-form");
 signupForm.onsubmit = (form) => {
-    if (localStorage.getItem("CanSignup") == "Yes") {
-        localStorage.removeItem("CanSignup");
+    if (localStorage.getItem("signupSuccess") == "Yes") {
+        localStorage.removeItem("signupSuccess");
         return true;
     }
-    else if (localStorage.getItem("CanSignup") == "No") {
-        localStorage.removeItem("CanSignup");
+    else if (localStorage.getItem("signupSuccess") == "No") {
+        localStorage.removeItem("signupSuccess");
         form.preventDefault();
     }
     else {
@@ -20,11 +20,11 @@ signupForm.onsubmit = (form) => {
         signupStatus = JSON.parse(signupStatus);
 
         if (signupStatus.result === true) {
-            localStorage.setItem("CanSignup", "Yes");
+            localStorage.setItem("signupSuccess", "Yes");
             document.getElementById("signup-button").click();
         }
         else {
-            localStorage.setItem("CanSignup", "No")
+            localStorage.setItem("signupSuccess", "No")
             document.getElementById("error-message-signup").innerHTML = signupStatus.result;
         }
     });
