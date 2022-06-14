@@ -119,6 +119,18 @@ class FoodRepository extends Repository {
         }
     } 
 
+    public function GetSessionID($restaurantID, $startDate, $startTime) {
+        try {
+            $stmt = $this->connection->prepare("SELECT sessionID FROM `Session` WHERE restaurantID = :restaurantID AND startDate = :startDate AND startTime = :startTime");
+            $stmt->execute(["restaurantID" => $restaurantID, "startDate" => $startDate, "startTime" => $startTime]);
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\Session');
+
+            return $stmt->fetchObject();
+        }  catch(PDOException $e) {
+            $e->getMessage();
+        }
+    }
+
  
 
     // public function GetSessionInformationByRestaurantID($id)

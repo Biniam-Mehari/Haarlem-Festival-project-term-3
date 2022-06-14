@@ -37,11 +37,26 @@ class ShoppingCartController
  
     }
 
+    public function removeItem() {
+        if (isset($_POST['removeButton'])) {
+            $restaurantID = $_POST['restaurantID'];
+            $date = $_POST['date'];
+            $time = $_POST['time'];
+
+            foreach($_SESSION['reservations'] as $events=>$values) {
+                if ($restaurantID == $values['restaurantID'] && $date == $values['date'] && $time == $values['time']) {
+                    unset($_SESSION['reservations'][$events]);
+                }
+            }
+        }
+
+        $this->index();
+    }
 
 
 
     public function addToCart() {
-        unset($_SESSION['reservations']);
+        //unset($_SESSION['reservations']);
 
         if (isset($_POST['reservationFood'])) {
             $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);

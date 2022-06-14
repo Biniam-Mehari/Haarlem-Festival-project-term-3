@@ -4,7 +4,7 @@ namespace Models;
 
 class Order {
     public int $orderID;
-    public OrderStatus $orderStatus;
+    public string $orderStatus;
     public int $userID;
 }
 

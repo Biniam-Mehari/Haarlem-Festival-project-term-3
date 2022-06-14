@@ -31,20 +31,28 @@ require_once __DIR__ . '/components/navigation.php';
 
                     ?>
                             <div class="row border-top border-bottom">
-                                <div class="row main align-items-center">
-                                    <div class="col-2"><img class="img-fluid" style="height: 100px; width: 100px;" src="/img/<?php echo $event['image']?>.png"></div>
-                                    <div class="col">
-                                        <div class="row text-muted"> Restaurant: <?php echo $event['restaurantName'] ?></div>
-                                        <div class="row">Date: <?php echo $event['date'] ?></div>
-                                        <div class="row text-muted">Time: <?php echo $event['time'] ?></div>
-                                        <div class="row">Address: <?php echo $event['address'] ?></div>
-                                        <div class="row">Comment: <?php echo $event['reservationComment'] ?></div>
+                                <form action="/shoppingcart/removeItem" method="post">
+                                <input name="restaurantID" value="<?php echo $event['restaurantID'] ?>" hidden>
+                                <input name="date" value="<?php echo $event['date'] ?>" hidden>
+                                <input name="time" value="<?php echo $event['time'] ?>" hidden>
+                                    <div class="row main align-items-center">
+                                        <div class="col-2"><img class="img-fluid" style="height: 100px; width: 100px;" src="/img/<?php echo $event['image'] ?>.png"></div>
+                                        <div class="col">
+                                            <div class="row text-muted"> Restaurant: <?php echo $event['restaurantName'] ?></div>
+                                            <div class="row">Date: <?php echo $event['date'] ?></div>
+                                            <div class="row text-muted">Time: <?php echo $event['time'] ?></div>
+                                            <div class="row">Address: <?php echo $event['address'] ?></div>
+                                            <div class="row">Comment: <?php echo $event['reservationComment'] ?></div>
+                                        </div>
+                                        <div class="col">
+                                            <a href="#">-</a><a href="#" class="border"><?php echo $event['quantity'] ?></a><a href="#">+</a>
+                                        </div>
+                                        <div class="col">&euro; <?php echo $event['totalPrice'] ?> <span class="close">&#10005;</span></div>
+                                        <div class="col">
+                                            <button class="btn btn-danger" name="removeButton">Remove</button>
+                                        </div>
                                     </div>
-                                    <div class="col">
-                                        <a href="#">-</a><a href="#" class="border"><?php echo $event['quantity'] ?></a><a href="#">+</a>
-                                    </div>
-                                    <div class="col">&euro; <?php echo $event['totalPrice'] ?> <span class="close">&#10005;</span></div>
-                                </div>
+                                </form>
                             </div>
                         <?php } else if ($event->type == 'Dance') {
                         ?>
@@ -71,15 +79,17 @@ require_once __DIR__ . '/components/navigation.php';
                         <h5><b>Summary</b></h5>
                     </div>
                     <hr>
+                    <form action="/order/addOrder" method="get">
                     <div class="row">
-                        <div class="col" style="padding-left:0;">NUMBER OF EVENTS:  </div>
+                        <div class="col" style="padding-left:0;">NUMBER OF EVENTS: </div>
                         <div class="col text-right"><?php echo $totalEvents ?></div>
                     </div>
                     <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                         <div class="col">TOTAL PRICE</div>
                         <div class="col text-right">&euro; <?php echo $totalAmount ?></div>
                     </div>
-                    <button class="btn" href="">CHECKOUT</button>
+                    <button class="button-pay" name="addOrder" href="">CHECKOUT</button>
+                    </form>
                 </div>
             </div>
         </div>
