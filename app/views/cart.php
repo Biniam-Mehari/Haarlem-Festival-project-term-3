@@ -47,9 +47,11 @@ require_once __DIR__ . '/components/navigation.php';
                                             <div class="row">Address: <?php echo $event['address'] ?></div>
                                             <div class="row">Comment: <?php echo $event['reservationComment'] ?></div>
                                         </div>
+                                        <form method="post" action="/shoppingcart/changeQuantity">
                                         <div class="col">
-                                            <a href="#">-</a><a href="#" class="border"><?php echo $event['quantity'] ?></a><a href="#">+</a>
+                                            <button class="btn btn-danger" name ="substractQuantity">-</button><a class="border"><?php echo $event['quantity'] ?></a><button class="btn btn-success" name="addQuantity">+</button>
                                         </div>
+                                        </form>
                                         <div class="col">&euro; <?php echo $event['totalPrice'] ?> <span class="close">&#10005;</span></div>
                                         <div class="col">
                                             <button class="btn btn-danger" name="removeButton">Remove</button>
@@ -82,7 +84,7 @@ require_once __DIR__ . '/components/navigation.php';
                         <h5><b>Summary</b></h5>
                     </div>
                     <hr>
-                    <form action="/order/addOrder" method="get">
+                    <form action="/order/addOrder" method="post">
                     <div class="row">
                         <div class="col" style="padding-left:0;">NUMBER OF EVENTS: </div>
                         <div class="col text-right"><?php echo $totalEvents ?></div>

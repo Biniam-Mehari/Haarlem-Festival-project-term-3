@@ -24,7 +24,7 @@ class OrderController
 
     public function addOrder()
     {
-        if (isset($_GET['addOrder'])) {
+        if (isset($_POST['addOrder'])) {
             if (!isset($_SESSION['user'])) {
                 echo "<script>location.assign('/user/loginview')</script>";
             }

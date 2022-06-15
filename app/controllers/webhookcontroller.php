@@ -49,7 +49,7 @@ class WebhookController {
                 $this->orderService->updateOrderStatus($orderID, 'expired');
             } elseif ($payment->isCanceled()) {
  
-                $this->orderService->updateOrderStatus($orderID, 'canceled');
+                $this->orderService->updateOrderStatus($orderID, 'cancelled');
             } elseif ($payment->hasRefunds()) {
 
                 $this->orderService->updateOrderStatus($orderID, 'refunded');

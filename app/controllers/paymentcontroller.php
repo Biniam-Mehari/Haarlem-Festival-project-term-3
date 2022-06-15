@@ -38,9 +38,9 @@ class PaymentController
                 "value" => "$totalPrice"
             ],
             "description" => "Haarlem festival : Order Nr. {$orderID}",
-            "redirectUrl" => "https://f04f-217-122-95-71.eu.ngrok.io/food",
-            "webhookUrl"  => "https://f04f-217-122-95-71.eu.ngrok.io/webhook",
-            "metadata" =>["orderID" => $orderID,
+            "redirectUrl" => "https://f8ff-217-122-95-71.eu.ngrok.io/food",
+            "webhookUrl"  => "https://f8ff-217-122-95-71.eu.ngrok.io/webhook",
+            "metadata" =>["orderID" => $orderID
             ],
         ]);
         header("Location: " . $payment->getCheckoutUrl(), true, 303);

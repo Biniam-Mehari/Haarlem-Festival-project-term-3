@@ -26,41 +26,72 @@ class ShoppingCartController
         $totalAmount = 0;
         $totalEvents = 0;
 
-        $this->calcTotalPrice($totalAmount, $totalEvents);
-
-          $_SESSION['totalAmount'] = $totalAmount;
-
-
-        require __DIR__ . '../../views/cart.php';
- 
-    }
-
-    public function calcTotalPrice($totalAmount, $totalEvents) {
-        foreach($_SESSION['reservations'] as $event) {
+        foreach ($_SESSION['reservations'] as $event) {
             $totalAmount += $event['totalPrice'];
             $totalEvents++;
         }
+
+        // foreach ($_SESSION['reservations'] as $event) {
+        //     $restaurantID = $_POST['restaurantID'];
+        //     $date = $_POST['date'];
+        //     $time = $_POST['time'];
+        //     $quantity = $_POST['quantity'];
+
+        //     if ($restaurantID == $event['restaurantID'] && $date == $event['date'] && $time == $event['time']) {
+        //         $quantity += $event['quantity'];
+        //         unset($_SESSION['reservations'][$restaurantID][$time][$quantity]);
+        //     }
+        // }
+
+        $_SESSION['totalAmount'] = $totalAmount;
+
+
+        require __DIR__ . '../../views/cart.php';
     }
 
-    public function removeAll() {
-        if (isset($_POST['removeAllButton'])) {
-            $restaurantFee = $_POST['reservationFee'];
 
-            foreach($_SESSION['reservations'] as $events=>$values) {
-                if ($restaurantFee == $values['restaurantFee']);
-                unset($_SESSION['reservations'][$events]);
-            }
+    // public function changeQuantity() {
+    //     if (isset($_POST['subtractQuantity']) || isset($_POST['addQuantity'])) {
+    //         $restaurantID = $_POST['restaurantID'];
+    //         $date = $_POST['date'];
+    //         $time = $_POST['time'];
+    //         foreach($_SESSION['reservations'] as $events=>$values) {
+    //             if (isset($_POST['addQuantity'])) {
+    //                 if ($restaurantID == $values['restaurantID'] && $date == $values['date'] && $time == $values['time']) {
+    //                     $_SESSION['reservations'][$events]['quantity'] += 1;
+    //                 }
+    //             }
+    //             else if (isset($_POST['subtractQuantity'])) {
+    //                 if ($restaurantID == $values['restaurantID'] && $date == $values['date'] && $time == $values['time']) {
+    //                     $_SESSION['reservations'][$events]['quantity'] -= 1;
+    //                 }
+
+    //                 if ($_SESSION['reservations'][$events]['quantity'] == 0) {
+    //                     unset($_SESSION['reservations'][$events]);
+    //                 }
+    //             }
+    //         }
+
+
+    //     }
+    // }
+
+    public function removeAll()
+    {
+        if (isset($_POST['removeAllButton'])) {
+            unset($_SESSION['reservations']);
         }
         $this->index();
     }
 
-    public function removeItem() {
+    public function removeItem()
+    {
         if (isset($_POST['removeButton'])) {
             $restaurantID = $_POST['restaurantID'];
             $date = $_POST['date'];
             $time = $_POST['time'];
 
-            foreach($_SESSION['reservations'] as $events=>$values) {
+            foreach ($_SESSION['reservations'] as $events => $values) {
                 if ($restaurantID == $values['restaurantID'] && $date == $values['date'] && $time == $values['time']) {
                     unset($_SESSION['reservations'][$events]);
                 }
@@ -73,7 +104,8 @@ class ShoppingCartController
 
 
 
-    public function addToCart() {
+    public function addToCart()
+    {
         //unset($_SESSION['reservations']);
 
         if (isset($_POST['reservationFood'])) {
@@ -98,8 +130,7 @@ class ShoppingCartController
 
             if (isset($_POST['reservationComment'])) {
                 $reservationComment = $_POST['reservationComment'];
-            }
-            else {
+            } else {
                 $reservationComment = "No comment";
             }
 
@@ -114,8 +145,5 @@ class ShoppingCartController
             //var_dump($_SESSION['reservations']);
 
         }
-
-        
     }
-
 }
