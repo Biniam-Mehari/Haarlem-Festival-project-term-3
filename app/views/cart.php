@@ -24,7 +24,9 @@ require_once __DIR__ . '/components/navigation.php';
                                 <h4><b>Shopping Cart</b></h4>
                             </div>
                             <div class="col align-self-center text-right text-muted"><?php echo $totalEvents ?> items</div>
-                            <button class="col align-self-center text-right btn-btn danger"> Remove all</button>
+                            <form method="post" action="/shoppingcart/removeAll">
+                            <button class="btn btn-warning col align-self-center text-right" name="removeAllButton"> Remove all</button>
+                            </form>
                         </div>
                     </div>
                     <?php foreach ($_SESSION['reservations'] as $event) :

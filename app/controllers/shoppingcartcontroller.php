@@ -26,16 +26,32 @@ class ShoppingCartController
         $totalAmount = 0;
         $totalEvents = 0;
 
-        foreach($_SESSION['reservations'] as $event) {
-            $totalAmount += $event['totalPrice'];
-            $totalEvents++;
-        }
+        $this->calcTotalPrice($totalAmount, $totalEvents);
 
           $_SESSION['totalAmount'] = $totalAmount;
 
 
         require __DIR__ . '../../views/cart.php';
  
+    }
+
+    public function calcTotalPrice($totalAmount, $totalEvents) {
+        foreach($_SESSION['reservations'] as $event) {
+            $totalAmount += $event['totalPrice'];
+            $totalEvents++;
+        }
+    }
+
+    public function removeAll() {
+        if (isset($_POST['removeAllButton'])) {
+            $restaurantFee = $_POST['reservationFee'];
+
+            foreach($_SESSION['reservations'] as $events=>$values) {
+                if ($restaurantFee == $values['restaurantFee']);
+                unset($_SESSION['reservations'][$events]);
+            }
+        }
+        $this->index();
     }
 
     public function removeItem() {
@@ -53,6 +69,7 @@ class ShoppingCartController
 
         $this->index();
     }
+
 
 
 
@@ -88,7 +105,7 @@ class ShoppingCartController
 
             $totalPrice = $quantity * $reservationFee;
 
-            $reservation = array('restaurantID' => $restaurantID, 'restaurantName' => $restaurantName, 'quantity' => $quantity, 'date' => $reservationDate, 'time' => $reservationTime, 'reservationComment' => $reservationComment, 'totalPrice' => $totalPrice, 'address' => $address, 'type' => $type, 'image' => $image);
+            $reservation = array('restaurantID' => $restaurantID, 'restaurantName' => $restaurantName, 'quantity' => $quantity, 'date' => $reservationDate, 'time' => $reservationTime, 'reservationComment' => $reservationComment, 'totalPrice' => $totalPrice, 'address' => $address, 'type' => $type, 'image' => $image, 'reservationFee' => $reservationFee);
 
             array_push($_SESSION['reservations'], $reservation);
 

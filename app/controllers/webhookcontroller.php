@@ -26,58 +26,37 @@ class WebhookController {
         
 
             $payment = $mollie->payments->get($_POST["id"]);
-           // $orderID = $payment->metadata->orderID;
-            $orderID = $_SESSION['orderID'];
+            $orderID = $payment->metadata->orderID;
+            //$orderID = $_SESSION['orderID'];
         
         
             if ($payment->isPaid() && ! $payment->hasRefunds() && ! $payment->hasChargebacks()) {
-                /*
-                 * The payment is paid and isn't refunded or charged back.
-                 * At this point you'd probably want to start the process of delivering the product to the customer.
-                 */
-                
+
                 $this->orderService->updateOrderStatus($orderID, 'paid');
-                //require_once('ticketPDF.php');
         
             } elseif ($payment->isOpen()) {
-                /*
-                 * The payment is open.
-                 */
-                $orderDAL->updateOrderStatus($orderId, 'open');
+
+                $this->orderService->updateOrderStatus($orderID, 'open');
         
             } elseif ($payment->isPending()) {
-                /*
-                 * The payment is pending.
-                 */
-                $orderDAL->updateOrderStatus($orderId, 'pending');
+
+                $this->orderService->updateOrderStatus($orderID, 'pending');
             } elseif ($payment->isFailed()) {
-                /*
-                 * The payment has failed.
-                 */
-                $orderDAL->updateOrderStatus($orderId, 'failed');
+
+                $this->orderService->updateOrderStatus($orderID, 'failed');
             } elseif ($payment->isExpired()) {
-                /*
-                 * The payment is expired.
-                 */
-                $orderDAL->updateOrderStatus($orderId, 'expired');
+
+                $this->orderService->updateOrderStatus($orderID, 'expired');
             } elseif ($payment->isCanceled()) {
-                /*
-                 * The payment has been canceled.
-                 */
-                $orderDAL->updateOrderStatus($orderId, 'cancelled');
+ 
+                $this->orderService->updateOrderStatus($orderID, 'canceled');
             } elseif ($payment->hasRefunds()) {
-                /*
-                 * The payment has been (partially) refunded.
-                 * The status of the payment is still "paid"
-                 */
-                $orderDAL->updateOrderStatus($orderId, 'refunded');
+
+                $this->orderService->updateOrderStatus($orderID, 'refunded');
         
             } elseif ($payment->hasChargebacks()) {
-                /*
-                 * The payment has been (partially) charged back.
-                 * The status of the payment is still "paid"
-                 */
-                $orderDAL->updateOrderStatus($orderId, 'charged back');
+
+                $this->orderService->updateOrderStatus($orderID, 'charged back');
             }
         } catch (\Mollie\Api\Exceptions\ApiException $e) {
             echo "API call failed: " . htmlspecialchars($e->getMessage());

@@ -22,13 +22,6 @@ class OrderController
 
     }
 
-
-    public function index()
-    {
-        $restaurants = $this->foodService->GetAllRestaurantInformation();
-        require __DIR__ . '../../views/Food/foodmain.php';
-    }
-
     public function addOrder()
     {
         if (isset($_GET['addOrder'])) {
