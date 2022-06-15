@@ -19,4 +19,8 @@ class OrderService {
     public function InsertTicket($orderID, $eventID, $eventType, $quantity, $comment) {
         return $this->orderRepository->InsertTicket($orderID, $eventID, $eventType, $quantity, $comment);
     }
+
+    public function updateOrderStatus($orderID, $orderStatus) {
+        $this->orderRepository->updateOrderStatus($orderID, $orderStatus);
+    }
 }

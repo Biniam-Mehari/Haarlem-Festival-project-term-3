@@ -24,6 +24,7 @@ require_once __DIR__ . '/components/navigation.php';
                                 <h4><b>Shopping Cart</b></h4>
                             </div>
                             <div class="col align-self-center text-right text-muted"><?php echo $totalEvents ?> items</div>
+                            <button class="col align-self-center text-right btn-btn danger"> Remove all</button>
                         </div>
                     </div>
                     <?php foreach ($_SESSION['reservations'] as $event) :
@@ -86,7 +87,7 @@ require_once __DIR__ . '/components/navigation.php';
                     </div>
                     <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                         <div class="col">TOTAL PRICE</div>
-                        <div class="col text-right">&euro; <?php echo $totalAmount ?></div>
+                        <div class="col text-right">&euro; <?php echo $_SESSION['totalAmount'] ?></div>
                     </div>
                     <button class="button-pay" name="addOrder" href="">CHECKOUT</button>
                     </form>

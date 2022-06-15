@@ -31,7 +31,8 @@ class ShoppingCartController
             $totalEvents++;
         }
 
- 
+          $_SESSION['totalAmount'] = $totalAmount;
+
 
         require __DIR__ . '../../views/cart.php';
  

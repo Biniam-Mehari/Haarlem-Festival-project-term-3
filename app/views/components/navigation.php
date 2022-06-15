@@ -22,6 +22,8 @@
           <li><a href="/">Home</a></li>
           <li><a href="/food">Food</a></li>
           <li><a href="/dance">Dance</a></li>
+          <li><a href="/shoppingcart">My cart</a><li>
+          <li><a href="/">My program</a><li>
 
           <?php
           if (isset($_SESSION['user'])) {

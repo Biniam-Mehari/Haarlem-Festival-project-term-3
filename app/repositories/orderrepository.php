@@ -39,4 +39,13 @@ class OrderRepository extends Repository
             echo "Could not retrieve information from the database for the Ticket" . $e->getMessage();
         }
     }
+
+    public function updateOrderStatus($orderID, $orderStatus) {
+        try {
+            $updateOrderStatus = $this->connection->prepare("UPDATE `Order` SET orderStatus =:orderStatus WHERE orderID =:orderID");
+            $updateOrderStatus->execute(["orderStatus" => $orderStatus, "orderID" => $orderID]);
+        } catch(PDOException $e) {
+            echo "Could not retrieve information from the database for the Order" . $e->getMessage();
+        }
+    }
 }
