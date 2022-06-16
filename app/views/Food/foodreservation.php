@@ -35,62 +35,62 @@ require_once __DIR__ . '/../components/navigation.php';
 
     <hr style="border: none; background-color: black; height: 3px; ">
 
-    <h1 style="text-align: center;">Book your table</h1>
-    <form class="w3-section w3-container" action="/shoppingcart/addToCart" method="post" id="form">
-        <section class="w3-bar">
-            <input name="restaurantID" value="<?php echo $restaurantInformation->restaurantID ?>" hidden>
-            <input name="address" value="<?php echo $restaurantInformation->streetName . ", " . $restaurantInformation->houseNumber . ", " . $restaurantInformation->postalCode . ", " . $restaurantInformation->city ?>" hidden>
-            <input name="reservationFee" value="<?php echo $restaurantInformation->reservationFee ?>" hidden>
-            <input name="restaurantName" value="<?php echo $restaurantInformation->restaurantName ?>" hidden>
-            <input name="image" value="<?php echo $restaurantInformation->imageName ?>" hidden>
-            <label for="date" style="display: flex; font-size: 30px;">Choose session date:</label>
-            <select class="w3-select" style="width: 30%;" name="reservationDate" id="selectDate" style="background-color:lavender;" required>
-                <option value="" disabled selected place>Choose your date</option>
-                <?php
-                foreach ($restaurantDateForSessions as $sessionDate) :
-                    $startDateFormat = strtotime($sessionDate->startDate);
-                    $sessionDates = date('d-m', $startDateFormat);
-                ?>
-                    <option value="<?php echo $sessionDate->startDate ?>"><?php echo $sessionDates ?></option>
-                <?php endforeach ?>
-            </select>
-        </section>
+    <section class="container mt-5 p-5 col-10 col-md-6 col-lg-4 col-xl-7" style="background-color: white;">
+        <div class="container">
+            <h1 style="text-align: center;">Book your table</h1>
+            <form action="/shoppingcart/addToCart" method="post" id="form">
+                <div class="form-group mt-3">
+                    <input name="restaurantID" value="<?php echo $restaurantInformation->restaurantID ?>" hidden>
+                    <input name="address" value="<?php echo $restaurantInformation->streetName . ", " . $restaurantInformation->houseNumber . ", " . $restaurantInformation->postalCode . ", " . $restaurantInformation->city ?>" hidden>
+                    <input name="reservationFee" value="<?php echo $restaurantInformation->reservationFee ?>" hidden>
+                    <input name="restaurantName" value="<?php echo $restaurantInformation->restaurantName ?>" hidden>
+                    <input name="image" value="<?php echo $restaurantInformation->imageName ?>" hidden>
+                    <label for="date" style="font-size: 25px;">Choose session date:</label>
+                    <select class="form-select" name="reservationDate" id="date" required>
+                        <option value="" disabled selected place>Choose your date</option>
+                        <?php
+                        foreach ($restaurantDateForSessions as $sessionDate) :
+                            $startDateFormat = strtotime($sessionDate->startDate);
+                            $sessionDates = date('d-m', $startDateFormat);
+                        ?>
+                            <option value="<?php echo $sessionDate->startDate ?>"><?php echo $sessionDates ?></option>
+                        <?php endforeach ?>
+                    </select>
+                </div>
 
-        <br>
-        <section class="w3-bar">
-            <label for="time" style="display: flex; font-size: 30px;">Choose session time:</label>
-            <select class="w3-select" id="selectTime" style="width: 30%; background-color: lavender;" name="reservationTime" id="time" required>
-                <option value="" disabled selected place>Choose your session time</option>
-                <?php
-                foreach ($restaurantTimeForSessions as $sessionTime) :
-                    $startTimeFormat = date('H:i', strtotime($sessionTime->startTime));
-                    $startTime = $sessionTime->startTime;
-                    $duration = $sessionTime->duration;
-                    $endTime = date("H:i", strtotime($startTime) + strtotime($duration) + strtotime('00:00:00'));
-                ?>
-                    <option value="<?php echo $sessionTime->startTime ?>"><?php echo $startTimeFormat ?> - <?php echo $endTime; ?></option>
-                <?php endforeach ?>
-            </select>
-        </section>
-        <br>
-        <div>
-            <label for="adults" style="font-size: 18px;">Number of adults:</label>
-            <input class="w3-input" type="number" style="width:30%;" name="adultAmount" min="0" max="<?php echo $restaurantInformation->seats ?>" id="adults" placeholder="Enter number of adults..." required>
+                <div class="form-group mt-3">
+                    <label for="time" style="font-size: 25px;">Choose session time:</label>
+                    <select class="form-select" name="reservationTime" id="time" required>
+                        <option value="" disabled selected place>Choose your session time</option>
+                        <?php
+                        foreach ($restaurantTimeForSessions as $sessionTime) :
+                            $startTimeFormat = date('H:i', strtotime($sessionTime->startTime));
+                            $startTime = $sessionTime->startTime;
+                            $duration = $sessionTime->duration;
+                            $endTime = date("H:i", strtotime($startTime) + strtotime($duration) + strtotime('00:00:00'));
+                        ?>
+                            <option value="<?php echo $sessionTime->startTime ?>"><?php echo $startTimeFormat ?> - <?php echo $endTime; ?></option>
+                        <?php endforeach ?>
+                    </select>
+                </div>
+                <div class="form-group mt-3">
+                    <label for="adults" style="font-size: 20px;">Number of adults:</label>
+                    <input class="form-control" type="number" name="adultAmount" min="0" max="<?php echo $restaurantInformation->seats ?>" id="adults" placeholder="Enter number of adults..." required>
+                </div>
+                <div class="form-group mt-3">
+                    <label for="children" style="font-size: 20px;">Number of children: </label>
+                    <input class="form-control" type="number" name="childAmount" min="0" max="<?php echo $restaurantInformation->seats ?>" id="children" placeholder="Enter number of children..." required>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="comment" style="font-size: 25px;">Additional comments: </label>
+                    <textarea class="form-control" type="text" style="resize: none;" name="reservationComment" id="comment" rows="3" placeholder="Enter comment here..."></textarea>
+                </div>
+
+                <button type="submit" name="reservationFood" class="btn btn-block btn-lg mb-4 col-12 mt-3 p-2" style="background-color: #a00c0c; color: white;">Place your reservation</button>
+            </form>
         </div>
-        <div>
-            <label for="nrOfChildren" style="font-size: 18px;">Number of children: </label>
-            <input class="w3-input" type="number" style="width:30%;" name="childAmount" min="0" max="<?php echo $restaurantInformation->seats ?>" id="children" placeholder="Enter number of children..." required>
-        </div>
-
-        <br>
-
-        <div>
-            <label for="comment" style="font-size: 30px;">Additional comments: </label>
-            <textarea class="w3-input" type="text" style="resize: none; width:50%;" name="reservationComment" id="restaurant-comment" placeholder="Enter comment here..."></textarea>
-        </div>
-
-        <button type="submit" name="reservationFood" class="w3-button w3-black w3-text-white w3-large w3-hover-grey" style="margin-top: 10px;"><b>Reserve</><i class="fas fa-cart-plus"></i></button>
-    </form>
+    </section>
 </body>
 
 </html>
