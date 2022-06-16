@@ -51,6 +51,10 @@ class ComposerStaticInita8ee288c172f6c4e16b703004fe7731b
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
         ),
+        'F' => 
+        array (
+            'FPDF\\' => 5,
+        ),
         'E' => 
         array (
             'Endroid\\QrCode\\' => 15,
@@ -137,6 +141,10 @@ class ComposerStaticInita8ee288c172f6c4e16b703004fe7731b
         'GuzzleHttp\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
+        ),
+        'FPDF\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fpdf184',
         ),
         'Endroid\\QrCode\\' => 
         array (

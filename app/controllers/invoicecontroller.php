@@ -1,20 +1,20 @@
 <?php
 
 namespace Controllers;
-use Fpdf\Fpdf;
+
+use FPFP\FPDF;
+use Models\User;
+use Models\Order;
+use Exception;
+/*call the FPDF library*/
+
+require('../vendor/fpdf184/fpdf.php');
+require_once("../vendor/phpqrcode/qrlib.php");
 
 class InvoiceController {
 
     public function index()
     {
-
-/*call the FPDF library*/
-require('../controller/vendor/fpdf184/fpdf.php');
-require_once('../model/User.php');
-require_once('../model/Order.php');
-require_once("../controller/vendor/phpqrcode/qrlib.php");
-
-
 
 
 //session_start();

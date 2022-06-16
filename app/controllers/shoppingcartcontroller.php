@@ -31,17 +31,7 @@ class ShoppingCartController
             $totalEvents++;
         }
 
-        // foreach ($_SESSION['reservations'] as $event) {
-        //     $restaurantID = $_POST['restaurantID'];
-        //     $date = $_POST['date'];
-        //     $time = $_POST['time'];
-        //     $quantity = $_POST['quantity'];
-
-        //     if ($restaurantID == $event['restaurantID'] && $date == $event['date'] && $time == $event['time']) {
-        //         $quantity += $event['quantity'];
-        //         unset($_SESSION['reservations'][$restaurantID][$time][$quantity]);
-        //     }
-        // }
+        
 
         $_SESSION['totalAmount'] = $totalAmount;
 
@@ -71,10 +61,9 @@ class ShoppingCartController
     //                 }
     //             }
     //         }
-
-
     //     }
     // }
+
 
     public function removeAll()
     {
@@ -132,6 +121,14 @@ class ShoppingCartController
                 $reservationComment = $_POST['reservationComment'];
             } else {
                 $reservationComment = "No comment";
+            }
+
+            // check if the same item exists, if so, add it
+            foreach ($_SESSION['reservations'] as $events => $values) {
+                if ($restaurantID == $values['restaurantID'] && $reservationDate == $values['date'] && $reservationTime == $values['time']) {
+                    $quantity += $values['quantity'];
+                    unset($_SESSION['reservations'][$events]);
+                }
             }
 
             $totalPrice = $quantity * $reservationFee;

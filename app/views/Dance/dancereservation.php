@@ -53,7 +53,7 @@ require_once __DIR__ . '/../components/navigation.php'
         <br>
         <label class=>Style: <?php echo $event->Artist->getStyle() ?></label>
         <br>
-        <labe>Social media</label>
+        <label>Social media</label>
           <br>
           <a href=<?php echo $event->Artist->getFacebook() ?>>
             <img class="socialMediaIcons" src="/img/socialMediaIcons/faceBook.png">
@@ -71,12 +71,13 @@ require_once __DIR__ . '/../components/navigation.php'
           <br>
           <br>
 
+          <form>
           <div class="btn-group" role="group" aria-label="...">
             <button font-size="100px" onclick="clicked(-1)">-</button>
             <input id="test" value="1"></input>
             <button onclick="clicked(1)">+</button>
-
           </div>
+          <
           <br>
           <br>
           <button type="button" class="btn btn-success">Book a ticket</button>

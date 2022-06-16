@@ -15,7 +15,8 @@
             "Services\\": "services",
             "Repositories\\": "repositories",
             "Models\\": "models",
-            "ApiControllers\\": "api/controllers"
+            "ApiControllers\\": "api/controllers",
+            "FPDF\\": "vendor/fpdf184"
         }
     }
 }
