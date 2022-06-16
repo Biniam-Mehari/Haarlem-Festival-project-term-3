@@ -106,71 +106,71 @@ class InvoiceController
 		$i = 1;
 
 		foreach ($_SESSION["reservations"] as $events => $values) {
-			$type = $values['type'];
-			var_dump($values["quantity"]);
-			
-			if ($type = "Food") {
+			if ("Food" == $values['type']) {
 				$pdf->Cell(10, 6, $i, 1, 0);
-				$pdf->Cell(80, 6, $values['type'], 1, 0);
-				$pdf->Cell(23, 6, $values["quantity"], 1, 0, 'R');
-				$pdf->Cell(30, 6, chr(128) . ' ' . number_format($values["totalPrice"], 2, ',', '.'), 1, 0, 'R');
+				$pdf->Cell(80, 6, "Food", 1, 0);
+				$pdf->Cell(23, 6, $events["quantity"], 1, 0, 'R');
+				$pdf->Cell(30, 6, chr(128) . ' ' . number_format($events["totalPrice"], 2, ',', '.'), 1, 0, 'R');
 				$pdf->Cell(20, 6, '% ' . 0.21, 1, 0, 'R');
-			} else if ($type = "Dance") {
+
+			}
+			else if ("Dance" == $values['type']) {
 				$pdf->Cell(10, 6, $i, 1, 0);
 				$pdf->Cell(80, 6, "Dance", 1, 0);
-				$pdf->Cell(23, 6, $values["amount"], 1, 0, 'R');
-				$pdf->Cell(30, 6, chr(128) . ' ' . number_format($values["totalPrice"], 2, ',', '.'), 1, 0, 'R');
+				$pdf->Cell(23, 6, $events["amount"], 1, 0, 'R');
+				$pdf->Cell(30, 6, chr(128) . ' ' . number_format($events["totalPrice"], 2, ',', '.'), 1, 0, 'R');
 				$pdf->Cell(20, 6, '% ' . 0.21, 1, 0, 'R');
 			}
 
 			$i++;
-		}
-		$pdf->Cell(25, 6, chr(128) . ' ' . number_format($_SESSION['totalAmount'], 2, ',', '.'), 1, 1, 'R');
+
+			$pdf->Cell(25, 6, chr(128) . ' ' . number_format($_SESSION['totalAmount'], 2, ',', '.'), 1, 1, 'R');
 
 
-		$pdf->Cell(118, 6, '', 0, 0);
-		$pdf->Cell(25, 6, 'total', 0, 0);
-		$pdf->Cell(45, 6, chr(128) . ' ' . number_format($_SESSION['totalAmount'], 2, ',', '.'), 1, 1, 'R');
+			$pdf->Cell(118, 6, '', 0, 0);
+			$pdf->Cell(25, 6, 'total', 0, 0);
+			$pdf->Cell(45, 6, chr(128) . ' ' . number_format($_SESSION['totalAmount'], 2, ',', '.'), 1, 1, 'R');
 
 
-		// ------------------ QR CODE --------------//
+			// ------------------ QR CODE --------------//
 
-		//Add QR code
+			//Add QR code
 
-		QRcode::png(20, 'QRcode.png');
+			QRcode::png(20, 'QRcode.png');
 
-		$pdf->Image("QRcode.png", 20, 190, 50, 50);
-
-
-		$file = $pdf->Output('S', "invoice/{$orderID}.pdf",  false);
-		$pdf->output();
-
-		require_once 'mailercontroller.php';
+			$pdf->Image("QRcode.png", 20, 190, 50, 50);
 
 
-		try {
-			//Recipients
-			$mail->setFrom('hfgroup2a@gmail.com', 'Haarlem festival');
-			$mail->addAddress('659495@student.inholland.nl');               //Name is optional
-			$mail->addAddress('alex.arkhipov.7590@gmail.com');
+			$file = $pdf->Output('S', "invoice/{$orderID}.pdf",  false);
+			$pdf->output();
 
-			//Attachments
-			$mail->addAttachment($file);         //Add attachments
-			$mail->addStringAttachment($file, "invoice.pdf");
+			require_once 'mailercontroller.php';
 
-			//Content
-			$mail->isHTML(true);                                  //Set email format to HTML
-			$mail->Subject = 'Invoice';
-			$mail->Body    = "Thank you for your purchase {$user->firstName}  {$user->lastName}!<br><br>
+
+			try {
+				//Recipients
+				$mail->setFrom('hfgroup2a@gmail.com', 'Haarlem festival');
+				$mail->addAddress('659495@student.inholland.nl');               //Name is optional
+				$mail->addAddress('alex.arkhipov.7590@gmail.com');
+
+				//Attachments
+				$mail->addAttachment($file);         //Add attachments
+				$mail->addStringAttachment($file, "invoice.pdf");
+
+				//Content
+				$mail->isHTML(true);                                  //Set email format to HTML
+				$mail->Subject = 'Invoice';
+				$mail->Body    = "Thank you for your purchase {$user->firstName}  {$user->lastName}!<br><br>
 
 	Please see attached for Haarlem festival invoice, due on {$now}. Do not hesitate to reach out if you have any questions.<br> <br>
 	
 	Kind Regards,<br><br>
 	The Haarlem Festival team";
-			$mail->AltBody = 'Hereby, your invoice:';
-			$mail->send();
-		} catch (Exception $e) {
-			echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+				$mail->AltBody = 'Hereby, your invoice:';
+				$mail->send();
+			} catch (Exception $e) {
+				echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+			}
 		}
 	}
 }

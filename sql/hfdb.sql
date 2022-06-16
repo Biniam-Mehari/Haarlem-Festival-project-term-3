@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Jun 16, 2022 at 12:19 AM
+-- Generation Time: Jun 11, 2022 at 06:50 PM
 -- Server version: 10.6.5-MariaDB-1:10.6.5+maria~focal
 -- PHP Version: 8.0.16
 
@@ -57,7 +57,7 @@ CREATE TABLE `Artist` (
   `instaGram` varchar(255) DEFAULT NULL,
   `tikTok` varchar(255) DEFAULT NULL,
   `faceBook` varchar(255) DEFAULT NULL,
-  `artistDescription` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
   `imageId` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -65,7 +65,7 @@ CREATE TABLE `Artist` (
 -- Dumping data for table `Artist`
 --
 
-INSERT INTO `Artist` (`artistId`, `artistName`, `style`, `youtube`, `instaGram`, `tikTok`, `faceBook`, `artistDescription`, `imageId`) VALUES
+INSERT INTO `Artist` (`artistId`, `artistName`, `style`, `youtube`, `instaGram`, `tikTok`, `faceBook`, `description`, `imageId`) VALUES
 (1, 'kingston', 'rock', '@youtube', '@instagram', '@ticktock', NULL, 'this', ''),
 (2, 'tiesto', 'Dance', NULL, NULL, NULL, NULL, 'Artist with talent to rock', 'tiesto'),
 (3, 'jack', 'slid', 'gfhvjb', 'jnklm,', 'nkm,.', 'kml,.', 'ml,.', ''),
@@ -115,25 +115,6 @@ INSERT INTO `Dance` (`eventId`, `specialguest`, `venueId`, `artistId`, `eventSes
 (4, '2018-07-27', 1, 2, 'backback', 60, 100, 24, 0.2, '02/03/2022', '02:34 AM', '4'),
 (5, 'sdfghj', 1, 1, 'cvghb', 2345, 2345, 12.9, 0.2, '12/04/2022', '23', '5'),
 (6, 'Bruno Mars', 1, 1, 'Have fun', 4, 500000, 33.5, 21, '18/12/22', '15:00', '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Event`
---
-
-CREATE TABLE `Event` (
-  `eventID` int(11) NOT NULL,
-  `eventType` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `Event`
---
-
-INSERT INTO `Event` (`eventID`, `eventType`) VALUES
-(2, 1),
-(3, 2);
 
 -- --------------------------------------------------------
 
@@ -207,87 +188,6 @@ CREATE TABLE `Invoice` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Order`
---
-
-CREATE TABLE `Order` (
-  `orderID` int(11) NOT NULL,
-  `orderStatus` varchar(128) NOT NULL,
-  `userID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `Order`
---
-
-INSERT INTO `Order` (`orderID`, `orderStatus`, `userID`) VALUES
-(2, 'open', 2),
-(3, 'open', 2),
-(4, 'open', 2),
-(5, 'open', 2),
-(6, 'open', 2),
-(7, 'open', 2),
-(8, 'open', 2),
-(9, 'open', 2),
-(10, 'open', 2),
-(11, 'open', 2),
-(12, 'open', 2),
-(13, 'open', 2),
-(14, 'open', 2),
-(15, 'open', 2),
-(16, 'open', 2),
-(17, 'open', 2),
-(18, 'open', 2),
-(19, 'open', 2),
-(20, 'paid', 2),
-(21, 'open', 2),
-(22, 'open', 2),
-(23, 'open', 2),
-(24, 'open', 2),
-(25, 'open', 2),
-(26, 'open', 2),
-(27, 'open', 2),
-(28, 'open', 2),
-(29, 'open', 2),
-(30, 'open', 2),
-(31, 'open', 2),
-(32, 'open', 2),
-(33, 'open', 2),
-(34, 'open', 2),
-(35, 'open', 2),
-(36, 'open', 2),
-(37, 'paid', 2),
-(38, 'open', 2),
-(39, 'open', 2),
-(40, 'open', 2),
-(41, 'open', 2),
-(42, 'open', 2),
-(43, 'open', 2),
-(44, 'open', 2),
-(45, 'open', 2),
-(46, 'open', 2),
-(47, 'open', 2),
-(48, 'open', 2),
-(49, 'open', 2),
-(50, 'open', 2),
-(51, 'open', 2),
-(52, 'open', 2),
-(53, 'open', 2),
-(54, 'open', 2),
-(55, 'open', 2),
-(56, 'open', 2),
-(57, 'open', 2),
-(58, 'open', 2),
-(59, 'open', 2),
-(60, 'open', 2),
-(61, 'open', 2),
-(62, 'open', 2),
-(63, 'open', 2),
-(64, 'open', 2);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `OrderHistory`
 --
 
@@ -337,6 +237,7 @@ INSERT INTO `Restaurant` (`restaurantID`, `restaurantName`, `cuisineType`, `rest
 (2, 'Ratatouille', 'French, Fish and Seafood, European', 'The successful Michelin restaurant in Haarlem of chef Jozua Jaring is – just like Ratatouille – a mix of French cuisine in today\'s reality with excellent value for money in an accessible environment in Haarlem. For example, in 2013 we started our restaurant in Haarlem in the Lange Veerstraat and after the move in 2015 we will also continue at our unique monumental location at Het Spaarne with our restaurant in Haarlem.', 'Spaarne', 96, '2011 CL', 'Haarlem', 4.00, 52, 45.00, 10.00, 'ratatouille'),
 (3, 'Restaurant ML', 'Dutch, Fish and Seafood, European', 'Restaurant ML is located in the heart of the charming national monument at Klokhuisplein. The restaurant is located in the courtyard of former printer Johan Enschedé and in the old style room of the former home of the Enschedé family. The elegant cuisine of chefs Mark Gratama is daring due to the exciting combination of flavors.', 'Kleine Houtstraat', 70, '2011 DR', 'Haarlem', 4.00, 60, 45.00, 10.00, 'ml'),
 (4, 'Restaurant Fris', 'Dutch, French, European', 'In the middle of Haarlem, near the Frederikspark, is Restaurant Fris. A modern restaurant where our chef presents dishes based on classic French cuisine, which he knows how to refine with worldwide influences. Taste fris\'s favorite signature dish, or guilty pleasure. A French croissant with duck liver, Ibérico ham, Savoramosterd with VOC spices, and fig ice cream is a taste bomb with worldwide influences. The wine list represents the Old and New Worlds with a global outlook. Respect for pure and honest products from the region is the motto at Fris, because behind every dish and in every wine there is a particularly passionate story.', 'Twijnderslaan', 7, '2012 BG', 'Haarlem', 4.00, 45, 45.00, 10.00, 'fris'),
+(5, 'Specktakel', 'European, International, Asian', 'Specktakel is a unique restaurant centrally located in the heart of Haarlem with special courtyard and terrace. At Specktakel you don\'t eat quietly. Not only because of the conviviality of your company, but also because of the international food and the worldly wine that you enjoy. The colors, aromas and flavors create a wonderful interplay that needs to be talked about...', 'Spekstraat', 4, '2011 HM', 'Haarlem', 3.00, 36, 35.00, 10.00, 'specktakel'),
 (6, 'Grand Cafe Brinkmann', 'Dutch, European, Modern', 'You can come to this bar after seeing Grote Markt. Don\'t forget to taste mouthwatering bitterballen, hamburgers and ricotta at Grand Café Brinkmann. Eating good apple pie, biscuits and croissants is what most clients recommend. Don\'t miss the opportunity to drink delicious draft beer, gin or wine. At this place, visitors can try great cappuccino, hot chocolate or tonic.', 'Grote Markt', 13, '2011 RC', 'Haarlem', 3.00, 100, 35.00, 10.00, 'brinkmann'),
 (7, 'Urban Frenchy Bistro Toujours', 'Dutch, Fish and Seafood, European', 'For an intimate, cozy and beautiful dinner with friends or family, take a seat in our beautiful restaurant area. With radiant daylight thanks to the domes on our roof. Which provide a magical beautiful light in the evening, when dining under the stars comes very close. Our signature dishes? These are the Côte de Boeuf and the lobster. But of course we serve a much more extensive number of beautiful dishes. We especially recommend that you come and try them all.', 'Oude Groenmarkt', 12, '2012 HL', 'Haarlem', 3.00, 48, 35.00, 10.00, 'toujours'),
 (8, 'The Golden Bull', 'Steakhouse, Argentinian, European', 'In addition to high quality steaks, we offer a cozy no-nonsense atmosphere. All this in combination with a wide range of special wines. An experience in which your taste buds are extremely stimulated. All our meat is prepared on the lava stone grill, this creates a huge taste sensation. With us you can still enjoy our luxury whisky range from Scotland and Japan after dinner. Excluding Single Malts.', 'Zijlstraat', 39, '2011 TK', 'Haarlem', 3.00, 60, 35.00, 10.00, 'goldenbull');
@@ -481,78 +382,12 @@ INSERT INTO `Session` (`sessionID`, `restaurantID`, `startDate`, `startTime`, `d
 --
 
 CREATE TABLE `Ticket` (
-  `ticketID` int(11) NOT NULL,
-  `eventID` int(11) NOT NULL,
-  `eventType` varchar(128) NOT NULL,
-  `orderID` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `comment` varchar(2000) DEFAULT NULL
+  `ticketId` int(11) NOT NULL,
+  `eventId` int(11) NOT NULL,
+  `numberOfTickets` int(11) NOT NULL,
+  `totalPriceOfTicket` float NOT NULL,
+  `orderId` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `Ticket`
---
-
-INSERT INTO `Ticket` (`ticketID`, `eventID`, `eventType`, `orderID`, `quantity`, `comment`) VALUES
-(3, 57, 'Food', 10, 4, '2'),
-(4, 48, 'Food', 10, 4, '2'),
-(5, 80, 'Food', 10, 6, '2'),
-(6, 45, 'Food', 10, 4, '2'),
-(7, 45, 'Food', 11, 4, '2'),
-(8, 45, 'Food', 12, 4, '2'),
-(9, 45, 'Food', 13, 4, '2'),
-(10, 45, 'Food', 14, 4, '2'),
-(11, 45, 'Food', 15, 4, '2'),
-(12, 48, 'Food', 16, 4, 'Help me'),
-(13, 48, 'Food', 17, 4, 'Help me'),
-(14, 48, 'Food', 18, 4, 'Help me'),
-(15, 48, 'Food', 19, 4, 'Help me'),
-(16, 48, 'Food', 20, 4, 'Help me'),
-(17, 48, 'Food', 21, 4, 'Help me'),
-(18, 48, 'Food', 22, 4, 'Help me'),
-(19, 48, 'Food', 23, 4, 'Help me'),
-(20, 48, 'Food', 24, 4, 'Help me'),
-(21, 48, 'Food', 25, 4, 'Help me'),
-(22, 45, 'Food', 26, 4, '2'),
-(23, 45, 'Food', 27, 4, '2'),
-(24, 45, 'Food', 28, 4, '2'),
-(25, 45, 'Food', 29, 4, '2'),
-(26, 48, 'Food', 30, 4, 'Help me'),
-(27, 45, 'Food', 31, 4, '2'),
-(28, 45, 'Food', 32, 4, '2'),
-(29, 45, 'Food', 33, 4, '2'),
-(30, 45, 'Food', 34, 4, '2'),
-(31, 45, 'Food', 35, 4, '2'),
-(32, 45, 'Food', 36, 4, '2'),
-(33, 45, 'Food', 37, 4, '2'),
-(34, 48, 'Food', 38, 4, 'Help me'),
-(35, 50, 'Food', 39, 4, '2'),
-(36, 50, 'Food', 40, 4, '2'),
-(37, 50, 'Food', 41, 4, '2'),
-(38, 45, 'Food', 42, 4, '2'),
-(39, 45, 'Food', 43, 4, '2'),
-(40, 45, 'Food', 44, 4, '2'),
-(41, 45, 'Food', 45, 4, '2'),
-(42, 50, 'Food', 46, 4, '2'),
-(43, 34, 'Food', 47, 6, '2'),
-(44, 34, 'Food', 48, 6, '2'),
-(45, 34, 'Food', 49, 6, '2'),
-(46, 34, 'Food', 50, 6, '2'),
-(47, 34, 'Food', 51, 6, '2'),
-(48, 58, 'Food', 52, 6, '2'),
-(49, 58, 'Food', 53, 6, '2'),
-(50, 58, 'Food', 54, 6, '2'),
-(51, 58, 'Food', 55, 6, '2'),
-(52, 58, 'Food', 56, 6, '2'),
-(53, 58, 'Food', 57, 6, '2'),
-(54, 58, 'Food', 58, 6, '2'),
-(55, 49, 'Food', 58, 4, '123'),
-(56, 57, 'Food', 59, 4, '2'),
-(57, 57, 'Food', 60, 4, '2'),
-(58, 57, 'Food', 61, 4, '2'),
-(59, 57, 'Food', 62, 4, '2'),
-(60, 58, 'Food', 63, 6, '2'),
-(61, 58, 'Food', 64, 6, '2');
 
 -- --------------------------------------------------------
 
@@ -576,9 +411,7 @@ CREATE TABLE `User` (
 --
 
 INSERT INTO `User` (`userID`, `firstName`, `lastName`, `username`, `email`, `password`, `telephoneNumber`, `roleID`) VALUES
-(2, 'Alex', 'Arkhipov', 'paxer2k', 'alex@arkhipov.nl', 'test12345', '06043284938', 1),
-(3, 'Alex', 'Arkhipov', 'fuue', 'alex.arkhipov.7590@gmail.com', 'test12345', '0614402112', 1),
-(10, 'Alex', 'Arkhipov', 'paxer', 'alex@arkhipov.nl', 'test12345', '0614402112', 1);
+(2, 'Alex', 'Arkhipov', 'paxer2k', 'alex@arkhipov.nl', 'test12345', '06043284938', 1);
 
 -- --------------------------------------------------------
 
@@ -593,7 +426,7 @@ CREATE TABLE `Venue` (
   `houseNumber` int(11) NOT NULL,
   `postCode` varchar(10) NOT NULL,
   `city` varchar(255) NOT NULL,
-  `venueDescription` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
   `imageID` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -601,13 +434,25 @@ CREATE TABLE `Venue` (
 -- Dumping data for table `Venue`
 --
 
-INSERT INTO `Venue` (`venueId`, `venueName`, `adress`, `houseNumber`, `postCode`, `city`, `venueDescription`, `imageID`) VALUES
+INSERT INTO `Venue` (`venueId`, `venueName`, `adress`, `houseNumber`, `postCode`, `city`, `description`, `imageID`) VALUES
 (1, 'Springffffffff', 'Springstraat', 25, '1089KL', 'Haarlem', 'awesome', ''),
 (2, 'sdfg', '2322e3re', 23, 'asdf', 'dfsgh', 'asdfg', ''),
 (3, 'xo club', '', 0, '', '', '', ''),
 (4, 'vbbbbbbbb', '', 0, '', '', '', ''),
 (5, 'vbbbbbbbb', '', 0, '', '', '', ''),
 (6, 'vbbbbbbbb', '', 0, '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `_Order`
+--
+
+CREATE TABLE `_Order` (
+  `orderId` int(11) NOT NULL,
+  `totalPriceOfOrder` float NOT NULL,
+  `isPaid` varchar(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -641,12 +486,6 @@ ALTER TABLE `Dance`
   ADD KEY `artistId` (`artistId`);
 
 --
--- Indexes for table `Event`
---
-ALTER TABLE `Event`
-  ADD PRIMARY KEY (`eventID`);
-
---
 -- Indexes for table `Food`
 --
 ALTER TABLE `Food`
@@ -658,13 +497,6 @@ ALTER TABLE `Food`
 --
 ALTER TABLE `Invoice`
   ADD PRIMARY KEY (`invoiceId`);
-
---
--- Indexes for table `Order`
---
-ALTER TABLE `Order`
-  ADD PRIMARY KEY (`orderID`),
-  ADD KEY `userID` (`userID`);
 
 --
 -- Indexes for table `OrderHistory`
@@ -701,8 +533,8 @@ ALTER TABLE `Session`
 -- Indexes for table `Ticket`
 --
 ALTER TABLE `Ticket`
-  ADD PRIMARY KEY (`ticketID`),
-  ADD KEY `orderID` (`orderID`);
+  ADD PRIMARY KEY (`ticketId`),
+  ADD KEY `orderId` (`orderId`);
 
 --
 -- Indexes for table `User`
@@ -716,6 +548,12 @@ ALTER TABLE `User`
 --
 ALTER TABLE `Venue`
   ADD PRIMARY KEY (`venueId`);
+
+--
+-- Indexes for table `_Order`
+--
+ALTER TABLE `_Order`
+  ADD PRIMARY KEY (`orderId`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -746,22 +584,10 @@ ALTER TABLE `Dance`
   MODIFY `eventId` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `Event`
---
-ALTER TABLE `Event`
-  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT for table `Invoice`
 --
 ALTER TABLE `Invoice`
   MODIFY `invoiceId` int(225) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Order`
---
-ALTER TABLE `Order`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `OrderHistory`
@@ -797,19 +623,25 @@ ALTER TABLE `Session`
 -- AUTO_INCREMENT for table `Ticket`
 --
 ALTER TABLE `Ticket`
-  MODIFY `ticketID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `ticketId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `User`
 --
 ALTER TABLE `User`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `Venue`
 --
 ALTER TABLE `Venue`
   MODIFY `venueId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `_Order`
+--
+ALTER TABLE `_Order`
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -841,12 +673,6 @@ ALTER TABLE `Food`
   ADD CONSTRAINT `Food_ibfk_1` FOREIGN KEY (`restaurantID`) REFERENCES `Restaurant` (`restaurantID`);
 
 --
--- Constraints for table `Order`
---
-ALTER TABLE `Order`
-  ADD CONSTRAINT `Order_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `User` (`userID`);
-
---
 -- Constraints for table `Session`
 --
 ALTER TABLE `Session`
@@ -856,7 +682,7 @@ ALTER TABLE `Session`
 -- Constraints for table `Ticket`
 --
 ALTER TABLE `Ticket`
-  ADD CONSTRAINT `Ticket_ibfk_2` FOREIGN KEY (`orderID`) REFERENCES `Order` (`orderID`);
+  ADD CONSTRAINT `Ticket_ibfk_1` FOREIGN KEY (`orderId`) REFERENCES `_Order` (`orderId`);
 
 --
 -- Constraints for table `User`

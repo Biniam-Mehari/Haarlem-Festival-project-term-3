@@ -223,7 +223,7 @@ class ShoppingCartController
 
             $totalPrice = $amount * $price;
 
-            $reservation = array('danceID' => $danceID, 'venueName' => $venueName, 'artistName' => $artistName, 'date' => $date, 'startTime' => $startTime, 'venueAddress' => $venueAdress, 'totalPrice' => $totalPrice, 'price' => $price, 'type' => $type, 'quantity' => $amount);
+            $reservation = array('danceID' => $danceID, 'venueName' => $venueName, 'artistName' => $artistName, 'date' => $date, 'startTime' => $startTime, 'venueAddress' => $venueAdress, 'totalPrice' => $totalPrice, 'price' => $price, 'type' => $type, 'amount' => $amount);
 
             array_push($_SESSION['reservations'], $reservation);
 
