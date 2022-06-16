@@ -20,7 +20,7 @@ class DanceRepository extends Repository
     {
         try {
 
-            $stmt = $this->connection->prepare("SELECT eventId, venueName,artistName,`date`,adress,houseNumber,postCode,city,price,startTime,duration FROM Dance AS d INNER JOIN Artist AS a ON d.artistId = a.artistId INNER JOIN Venue AS v ON d.venueId = v.venueId");
+            $stmt = $this->connection->prepare("SELECT eventId, venueName,artistName,`date`,adress,houseNumber,postCode,city,price,startTime,duration,a.imageId FROM Dance AS d INNER JOIN Artist AS a ON d.artistId = a.artistId INNER JOIN Venue AS v ON d.venueId = v.venueId");
 
             $stmt->execute();
 
@@ -50,6 +50,9 @@ class DanceRepository extends Repository
 
                 $artist->setArtistName($row["artistName"]);
 
+                $artist-> setImage_id($row["imageId"]);
+           
+
                 $venue->setAdress($row["adress"]);
                 
                 $venue->setHousenumber($row["houseNumber"]);
@@ -65,7 +68,7 @@ class DanceRepository extends Repository
                 $results[] = $danceevent;
             }
 
-            return $results;
+           return $results;
         } catch (PDOException $ex) {
 
 
