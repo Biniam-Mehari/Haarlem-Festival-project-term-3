@@ -1,10 +1,10 @@
 
 body {
-    background-color: #F8E4D7;
+
 }
 
 
-/* .form{
+.form{
     width: 650px;
 }
 
@@ -85,12 +85,12 @@ textarea {
     width: 200px;
     background-color: black !important;
     color: rgb(173, 158, 158) !important;
-} */
+}
 
 
 
-/* @media screen and (max-width:710px) {
+@media screen and (max-width:710px) {
     .main-form{
         text-align: center;
     }
-} */
+}

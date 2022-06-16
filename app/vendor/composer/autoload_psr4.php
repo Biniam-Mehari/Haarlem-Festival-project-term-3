@@ -13,7 +13,6 @@ return array(
     'Services\\' => array($baseDir . '/services'),
     'Routers\\' => array($baseDir . '/routers'),
     'Repositories\\' => array($baseDir . '/repositories'),
-    'QRCODE\\' => array($vendorDir . '/phpqrcode'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/src'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
     'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
