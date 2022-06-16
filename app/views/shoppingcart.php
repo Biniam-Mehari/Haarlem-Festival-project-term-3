@@ -49,7 +49,7 @@ require_once __DIR__ . '/components/navigation.php';
                                             <input name="restaurantID" value="<?php echo $event['restaurantID'] ?>" hidden>
                                             <input name="date" value="<?php echo $event['date'] ?>" hidden>
                                             <input name="time" value="<?php echo $event['time'] ?>" hidden>
-                                            <input name="reservationFee" value="<?php echo $event['reservationFee'] ?>" hidden>
+                                            <input name="reservationFee" value="<?php echo $event['price'] ?>" hidden>
                                             <button class="btn btn-danger" name="subtractQuantityFood">-</button><a class="border"><?php echo $event['quantity'] ?></a><button class="btn btn-success" name="addQuantityFood">+</button>
                                         </form>
                                     </div>
@@ -85,7 +85,7 @@ require_once __DIR__ . '/components/navigation.php';
                                         <div class="col">
                                             <input name="danceID" value="<?php echo $event['danceID'] ?>" hidden>
                                             <input name="price" value="<?php echo $event['price'] ?>" hidden>
-                                            <button class="btn btn-danger" name="subtractQuantityDance">-</button><a class="border"><?php echo $event['amount'] ?></a><button class="btn btn-success" name="addQuantityDance">+</button>
+                                            <button class="btn btn-danger" name="subtractQuantityDance">-</button><a class="border"><?php echo $event['quantity'] ?></a><button class="btn btn-success" name="addQuantityDance">+</button>
                                         </div>
                                     </form>
                                     </div>

@@ -77,14 +77,14 @@ class ShoppingCartController
                 if ("Dance" == $values['type']) {
                     if (isset($_POST['addQuantityDance'])) {
                         if ($danceID == $values['danceID']) {
-                            $_SESSION['reservations'][$events]['amount'] += 1;
-                            $newPrice = $_SESSION['reservations'][$events]['amount'] * $price;
+                            $_SESSION['reservations'][$events]['quantity'] += 1;
+                            $newPrice = $_SESSION['reservations'][$events]['quantity'] * $price;
                             $_SESSION['reservations'][$events]['totalPrice'] = $newPrice;
                         }
                     } else if (isset($_POST['subtractQuantityDance'])) {
                         if ($danceID == $values['danceID']) {
-                            $_SESSION['reservations'][$events]['amount'] -= 1;
-                            $newPrice = $_SESSION['reservations'][$events]['amount'] * $price;
+                            $_SESSION['reservations'][$events]['quantity'] -= 1;
+                            $newPrice = $_SESSION['reservations'][$events]['quantity'] * $price;
                             $_SESSION['reservations'][$events]['totalPrice'] = $newPrice; // check this
                         }
 
@@ -184,7 +184,7 @@ class ShoppingCartController
 
             $totalPrice = $quantity * $reservationFee;
 
-            $reservation = array('restaurantID' => $restaurantID, 'restaurantName' => $restaurantName, 'quantity' => $quantity, 'date' => $reservationDate, 'time' => $reservationTime, 'reservationComment' => $reservationComment, 'totalPrice' => $totalPrice, 'address' => $address, 'type' => $type, 'image' => $image, 'reservationFee' => $reservationFee);
+            $reservation = array('restaurantID' => $restaurantID, 'restaurantName' => $restaurantName, 'quantity' => $quantity, 'date' => $reservationDate, 'time' => $reservationTime, 'reservationComment' => $reservationComment, 'totalPrice' => $totalPrice, 'address' => $address, 'type' => $type, 'image' => $image, 'price' => $reservationFee);
 
             array_push($_SESSION['reservations'], $reservation);
 
@@ -215,7 +215,7 @@ class ShoppingCartController
             foreach ($_SESSION['reservations'] as $events => $values) {
                 if ($type == $values['type']) {
                     if ($danceID == $values['danceID']) {
-                        $amount += $values['amount'];
+                        $amount += $values['quantity'];
                         unset($_SESSION['reservations'][$events]);
                     }
                 }
@@ -223,7 +223,7 @@ class ShoppingCartController
 
             $totalPrice = $amount * $price;
 
-            $reservation = array('danceID' => $danceID, 'venueName' => $venueName, 'artistName' => $artistName, 'date' => $date, 'startTime' => $startTime, 'venueAddress' => $venueAdress, 'totalPrice' => $totalPrice, 'price' => $price, 'type' => $type, 'amount' => $amount);
+            $reservation = array('danceID' => $danceID, 'venueName' => $venueName, 'artistName' => $artistName, 'date' => $date, 'startTime' => $startTime, 'venueAddress' => $venueAdress, 'totalPrice' => $totalPrice, 'price' => $price, 'type' => $type, 'quantity' => $amount);
 
             array_push($_SESSION['reservations'], $reservation);
 

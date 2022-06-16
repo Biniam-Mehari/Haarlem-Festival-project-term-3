@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+
 use Services\FoodService;
 use Services\OrderService;
 
@@ -12,12 +13,14 @@ class OrderController
     private $foodService;
     private $paymentController;
     private $webhookController;
+    private $invoice;
 
     function __construct()
     {
         $this->orderService = new OrderService();
         $this->foodService = new FoodService();
         $this->paymentController = new PaymentController();
+        $this->invoice =new InvoiceController();
         //$this->webhookController = new WebhookController();
 
     }
@@ -48,12 +51,15 @@ class OrderController
                 $session = $this->foodService->GetSessionID($ticket['restaurantID'], $ticket['date'], $ticket['time']);
                 $this->orderService->InsertTicket($orderID, $session->sessionID, $ticket['type'],  $ticket['quantity'], $ticket['reservationComment']);
             }
+            else{
+                $this->orderService->InsertTicket($orderID, $ticket['danceID'], $ticket['type'],  $ticket['quantity'], " ");
+            }
         }
 
+        //we try her it does not work
+        //$this->invoice->index();
         $this->paymentController->InitializeMollie();
-        //$this->APImollie();
-        //$this->webhookController->updateStatus();
-
-        // echo "<script>location.assign('/food')</script>";
+        
+        
     }
 }
