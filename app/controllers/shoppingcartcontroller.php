@@ -36,26 +36,26 @@ class ShoppingCartController
         $_SESSION['totalAmount'] = $totalAmount;
 
 
-        require __DIR__ . '../../views/cart.php';
+        require __DIR__ . '../../views/shoppingcart.php';
     }
 
 
     public function changeQuantity()
     {
-        if (isset($_POST['subtractQuantity']) || isset($_POST['addQuantity'])) {
+        if (isset($_POST['subtractQuantityFood']) || isset($_POST['addQuantityFood'])) {
             $restaurantID = $_POST['restaurantID'];
             $date = $_POST['date'];
             $time = $_POST['time'];
             $reservationFee = $_POST['reservationFee'];
             foreach ($_SESSION['reservations'] as $events => $values) {
                 if ("Food" == $values['type']) {
-                    if (isset($_POST['addQuantity'])) {
+                    if (isset($_POST['addQuantityFood'])) {
                         if ($restaurantID == $values['restaurantID'] && $date == $values['date'] && $time == $values['time']) {
                             $_SESSION['reservations'][$events]['quantity'] += 1;
                             $newPrice = $_SESSION['reservations'][$events]['quantity'] * $reservationFee;
                             $_SESSION['reservations'][$events]['totalPrice'] = $newPrice;
                         }
-                    } else if (isset($_POST['subtractQuantity'])) {
+                    } else if (isset($_POST['subtractQuantityFood'])) {
                         if ($restaurantID == $values['restaurantID'] && $date == $values['date'] && $time == $values['time']) {
                             $_SESSION['reservations'][$events]['quantity'] -= 1;
                             $newPrice = $_SESSION['reservations'][$events]['quantity'] * $reservationFee;
@@ -68,9 +68,34 @@ class ShoppingCartController
                     }
                 }
             }
-        }
+            $this->index();
+        } elseif (isset($_POST['subtractQuantityDance']) || isset($_POST['addQuantityDance'])) {
+            $danceID = $_POST['danceID'];
+            $price = $_POST['price'];
 
-        $this->index();
+            foreach ($_SESSION['reservations'] as $events => $values) {
+                if ("Dance" == $values['type']) {
+                    if (isset($_POST['addQuantityDance'])) {
+                        if ($danceID == $values['danceID']) {
+                            $_SESSION['reservations'][$events]['amount'] += 1;
+                            $newPrice = $_SESSION['reservations'][$events]['amount'] * $price;
+                            $_SESSION['reservations'][$events]['totalPrice'] = $newPrice;
+                        }
+                    } else if (isset($_POST['subtractQuantityDance'])) {
+                        if ($danceID == $values['danceID']) {
+                            $_SESSION['reservations'][$events]['amount'] -= 1;
+                            $newPrice = $_SESSION['reservations'][$events]['amount'] * $price;
+                            $_SESSION['reservations'][$events]['totalPrice'] = $newPrice; // check this
+                        }
+
+                        if ($_SESSION['reservations'][$events]['amount'] == 0) {
+                            unset($_SESSION['reservations'][$events]);
+                        }
+                    }
+                }
+            }
+            $this->index();
+        }
     }
 
 
