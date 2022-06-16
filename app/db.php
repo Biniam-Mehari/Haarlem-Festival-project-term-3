@@ -1,8 +1,8 @@
 <?php
-define('DB_HOST', 'mysql');
-define('DB_USER', 'root');
-define('DB_PASSWORD', 'secret123');
-define('DB_NAME', 'hfdb');
+define('DB_HOST', 'sql11.freemysqlhosting.net');
+define('DB_USER', 'sql11500291');
+define('DB_PASSWORD', '7sIyL81m87');
+define('DB_NAME', 'sql11500291');
 
 
 class DB extends PDO
