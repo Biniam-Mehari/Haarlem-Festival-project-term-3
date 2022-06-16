@@ -24,7 +24,7 @@ class WebhookController {
         
             require ("../vendor/mollie/mollie-api-php/examples/initialize.php");
         
-
+            $mollie->setApiKey("test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8");
             $payment = $mollie->payments->get($_POST["id"]);
             $orderID = $payment->metadata->orderID;
             //$orderID = $_SESSION['orderID'];
@@ -33,6 +33,7 @@ class WebhookController {
             if ($payment->isPaid() && ! $payment->hasRefunds() && ! $payment->hasChargebacks()) {
 
                 $this->orderService->updateOrderStatus($orderID, 'paid');
+                var_dump("hi");
         
             } elseif ($payment->isOpen()) {
 

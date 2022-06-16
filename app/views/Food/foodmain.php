@@ -17,12 +17,13 @@ require_once __DIR__ . '/../components/navigation.php'
 </head>
 
 <body>
+<div class="container">
     <section class="food-banner">
         <img class="food-banner-image" src="/img/foodbanner.png">
         <h1 class="food-title">Food</h1>
         <p class="food-description">Taste some of the most exquisite cuisines that the Haarlem Festival has to offer!</p>
     </section>
-
+    
     <h1 class="display-title">Visit one of our restaurants</h1>
 
     <section class="restaurants">
@@ -51,6 +52,7 @@ require_once __DIR__ . '/../components/navigation.php'
             <?php endforeach ?>
         </main>
     </section>
+    </div>
 </body>
 
 </html>

@@ -25,8 +25,9 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
- namespace FPDF;
-	
+namespace QRCODE;
+
+
 	$QR_BASEDIR = dirname(__FILE__).DIRECTORY_SEPARATOR;
 	
 	// Required libs
@@ -42,4 +43,5 @@
 	include $QR_BASEDIR."qrrscode.php";
 	include $QR_BASEDIR."qrmask.php";
 	include $QR_BASEDIR."qrencode.php";
+
 
