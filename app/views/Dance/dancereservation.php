@@ -71,36 +71,25 @@ require_once __DIR__ . '/../components/navigation.php'
           <br>
           <br>
 
-          <form>
-          <div class="btn-group" role="group" aria-label="...">
-            <button font-size="100px" onclick="clicked(-1)">-</button>
-            <input id="test" value="1"></input>
-            <button onclick="clicked(1)">+</button>
-          </div>
-          <
+          <form class="w3-section w3-container" action="/shoppingcart/addToCart" method="post" id="form">
+          <input name="danceID" value="<?php echo $danceID ?>" hidden>
+          <input name="venueName" value="<?php echo $event->Venue->getVenueName() ?>" hidden>
+          <input name="date" value="<?php echo $event->getDate() ?>" hidden>
+          <input name="artistName" value="<?php echo $event->Artist->getArtistName() ?>" hidden>
+          <input name="startTime" value="<?php echo $event->getStartTime() ?>" hidden>
+          <input name="venueAdress" value="<?php echo $event->Venue->getAdress()?>" hidden>
+          <input name="price" value="<?php echo $event->getPrice() ?>" hidden>
           <br>
           <br>
-          <button type="button" class="btn btn-success">Book a ticket</button>
+          <label for="adults" style="font-size: 18px;">Number of tickets:</label>
+            <input class="w3-input" type="number" style="width:30%;" name="amount" id="tickets" placeholder="Enter number of tickets..." required>
+            <br>
+          <button name="danceReservation" type="submit" class="btn btn-success">Book a ticket</button>
+          </form>
 
       </div>
 
-      <script type="text/javascript">
-        var i = 1;
-
-        function clicked(n) {
-          //var test = document.getElementById("test");
-          const number = document.getElementById("test").value;
-          if (number >= 1) {
-            i = i + n;
-            document.getElementById("test").value = i;
-          }
-
-        };
-      </script>
-
-
-
-
+   
     </div>
   </div>
 

@@ -81,9 +81,24 @@ class ShoppingCartController
             $time = $_POST['time'];
 
             foreach ($_SESSION['reservations'] as $events => $values) {
+                if("Food"== $values['type']){
                 if ($restaurantID == $values['restaurantID'] && $date == $values['date'] && $time == $values['time']) {
                     unset($_SESSION['reservations'][$events]);
                 }
+            }
+            }
+        }
+
+        if (isset($_POST['removeButtonDance'])) {
+            $danceID = $_POST['danceID'];
+ 
+
+            foreach ($_SESSION['reservations'] as $events => $values) {
+                if("Dance"== $values['type']){
+                if ($danceID == $values['danceID']) {
+                    unset($_SESSION['reservations'][$events]);
+                }
+            }
             }
         }
 
@@ -125,10 +140,12 @@ class ShoppingCartController
 
             // check if the same item exists, if so, add it
             foreach ($_SESSION['reservations'] as $events => $values) {
+                if($type== $values['type']){
                 if ($restaurantID == $values['restaurantID'] && $reservationDate == $values['date'] && $reservationTime == $values['time']) {
                     $quantity += $values['quantity'];
                     unset($_SESSION['reservations'][$events]);
                 }
+            }
             }
 
             $totalPrice = $quantity * $reservationFee;
@@ -140,7 +157,47 @@ class ShoppingCartController
             $this->index();
 
             //var_dump($_SESSION['reservations']);
-
+            
         }
+
+        
+        if (isset($_POST['danceReservation'])) {
+            $_POST = filter_input_array(INPUT_POST, FILTER_UNSAFE_RAW);
+
+            if (!isset($_SESSION['reservations'])) {
+                $_SESSION['reservations'] = array();
+            }
+            $type = 'Dance';
+            $danceID = $_POST['danceID'];
+            $venueName = $_POST['venueName'];
+            $artistName = $_POST['artistName'];
+            $date = $_POST['date'];
+            $startTime = $_POST['startTime'];
+            $venueAdress = $_POST['venueAdress'];
+            $price = $_POST['price'];
+            $amount = $_POST['amount'];
+            
+            // check if the same item exists, if so, add it
+            foreach ($_SESSION['reservations'] as $events => $values) {
+                if($type== $values['type']){
+                    if ($danceID == $values['danceID']) {
+                        $amount += $values['amount'];
+                        unset($_SESSION['reservations'][$events]);
+                    }
+                }
+            }
+
+            $totalPrice = $amount * $price;
+
+            $reservation = array('danceID' => $danceID, 'venueName' => $venueName, 'artistName' => $artistName, 'date' => $date, 'startTime' => $startTime, 'venueAddress' => $venueAdress, 'totalPrice' => $totalPrice, 'price' => $price, 'type' => $type, 'amount' => $amount);
+
+            array_push($_SESSION['reservations'], $reservation);
+
+            $this->index();
+
+            //var_dump($_SESSION['reservations']);
+        }
+
+
     }
 }
