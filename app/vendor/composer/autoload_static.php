@@ -30,6 +30,10 @@ class ComposerStaticInita8ee288c172f6c4e16b703004fe7731b
             'Routers\\' => 8,
             'Repositories\\' => 13,
         ),
+        'Q' => 
+        array (
+            'QRCODE\\' => 7,
+        ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
@@ -105,6 +109,10 @@ class ComposerStaticInita8ee288c172f6c4e16b703004fe7731b
         'Repositories\\' => 
         array (
             0 => __DIR__ . '/../..' . '/repositories',
+        ),
+        'QRCODE\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpqrcode',
         ),
         'Psr\\Log\\' => 
         array (

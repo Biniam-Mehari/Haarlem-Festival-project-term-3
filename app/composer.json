@@ -16,7 +16,8 @@
             "Repositories\\": "repositories",
             "Models\\": "models",
             "ApiControllers\\": "api/controllers",
-            "FPDF\\": "vendor/fpdf184"
+            "FPDF\\": "vendor/fpdf184",
+            "QRCODE\\": "vendor/phpqrcode"
         }
     }
 }
