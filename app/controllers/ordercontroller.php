@@ -56,7 +56,9 @@ class OrderController
             }
         }
 
-        //we try her it does not work
+
+        // leaving this to rememer to talk about it
+        //we try here it does not work
         //$this->invoice->index();
         $this->paymentController->InitializeMollie();
         
