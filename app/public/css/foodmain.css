@@ -130,12 +130,6 @@ body {
     font-size: 1.5rem;
 }
 
-.socialMediaIcons{
-    width: 35px !important;
-    height: 35px !important;
-    margin-right:12px;
-}
-
 
 @media (max-width: 768px) {
     .grid {

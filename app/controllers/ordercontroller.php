@@ -29,7 +29,7 @@ class OrderController
     {
         if (isset($_POST['addOrder'])) {
             if (!isset($_SESSION['user'])) {
-                echo "<script>location.assign('/user/loginview')</script>";
+                header("Location: /user/loginview");
             }
 
             $user = $_SESSION['user'];

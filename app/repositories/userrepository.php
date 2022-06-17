@@ -31,10 +31,11 @@ class UserRepository extends Repository
                 if ($login->rowCount() > 0) {
                     $user = $login->fetchObject();
                     $_SESSION["user"] = $user;
-                    echo "<script>location.assign('/food')</script>";
+                    //echo "<script>location.assign('/food')</script>";
+                    header("Location: /food");
                 } else {
                     echo '<script>alert("Email or password is incorrect!")</script>';
-                echo "<script>location.assign('/user/loginview')</script>";
+                    header("Location: /user/loginview");
                 }
             }
             else {

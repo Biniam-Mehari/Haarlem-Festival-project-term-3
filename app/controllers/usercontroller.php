@@ -34,20 +34,20 @@ class UserController
     {
         session_unset();
         session_destroy();
-        echo "<script>location.assign('/food')</script>";
+        header("Location: /food");
     }
 
 
     public function login()
     {
         $login = $this->userService->login();
-        echo "<script>location.assign('/food')</script>";
+        header("Location: /food");
     }
 
     public function signup()
     {
         $signup = $this->userService->signup();
-        echo "<script>location.assign('/food')</script>";
+        header("Location: /food");
     }
 
     public function checkLogin()

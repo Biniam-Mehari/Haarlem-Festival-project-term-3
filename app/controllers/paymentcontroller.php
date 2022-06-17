@@ -30,7 +30,6 @@ class PaymentController
     
         $totalPrice = number_format(floatval($_SESSION["totalAmount"]),2,'.',',');
         $orderID = $_SESSION['orderID'];
-        //$orderID = $order->getOrderID();
     
         $payment = $mollie->payments->create([
             "amount" => [
