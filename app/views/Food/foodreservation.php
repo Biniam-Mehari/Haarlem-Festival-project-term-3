@@ -18,7 +18,6 @@ require_once __DIR__ . '/../components/navigation.php';
 
 
 <body>
-<div class="container">
         <div class="w3-row-padding w3-padding-64 w3-container" style="height: 100%;">
             <div class="w3-col w3-center" style="width: 30%;">
                 <img class="w3-xxlarge w3-border-black w3-border" style="height: 100%; width: 100%;" src="/img/<?php echo $restaurantInformation->imageName ?>.png">
@@ -92,7 +91,6 @@ require_once __DIR__ . '/../components/navigation.php';
                 </form>
             </div>
         </section>
-    </div>
 </body>
 
 </html>

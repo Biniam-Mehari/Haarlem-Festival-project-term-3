@@ -17,7 +17,6 @@ require_once __DIR__ . '/../components/navigation.php'
 </head>
 
 <body>
-<div class="container">
     <section class="food-banner">
         <img class="food-banner-image" src="/img/foodbanner.png">
         <h1 class="food-title">Food</h1>
@@ -52,7 +51,6 @@ require_once __DIR__ . '/../components/navigation.php'
             <?php endforeach ?>
         </main>
     </section>
-    </div>
 </body>
 
 </html>

@@ -38,8 +38,8 @@ class PaymentController
                 "value" => "$totalPrice"
             ],
             "description" => "Haarlem festival : Order Nr. {$orderID}",
-            "redirectUrl" => "https://24f5-109-36-144-63.eu.ngrok.io/confirm",
-            "webhookUrl"  => "https://24f5-109-36-144-63.eu.ngrok.io/webhook",
+            "redirectUrl" => "https://f653-217-122-95-71.eu.ngrok.io/confirm",
+            "webhookUrl"  => "https://f653-217-122-95-71.eu.ngrok.io/webhook",
             "metadata" =>["orderID" => $orderID
             ],
         ]);

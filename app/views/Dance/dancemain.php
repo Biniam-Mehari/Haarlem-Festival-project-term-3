@@ -17,7 +17,6 @@ require_once __DIR__ . '/../components/navigation.php'
 </head>
 
 <body>
-    <div class="container">
     <section class="dance-banner">
         <img class="dance-banner-image" src="/img/dancePage.png">
       
@@ -65,7 +64,6 @@ require_once __DIR__ . '/../components/navigation.php'
 
         </main>
     </section>
-    </div>
 </body>
 
 </html>
