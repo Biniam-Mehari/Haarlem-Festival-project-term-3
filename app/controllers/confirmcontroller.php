@@ -15,6 +15,9 @@ class confirmController
 
         //sending invoice
         $this->invoice->index();
+        unset($_SESSION['reservations']);
+        unset($_SESSION['orderID']);
+        unset($_SESSION['totalAmount']);
         require __DIR__ . '../../views/confirmationMessage.php';
        
        
