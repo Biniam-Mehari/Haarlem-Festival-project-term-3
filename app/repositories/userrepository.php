@@ -11,8 +11,6 @@ use Models\User;
 
 class UserRepository extends Repository
 {
-
-
     public function login()
     {
         try {
@@ -23,7 +21,7 @@ class UserRepository extends Repository
                 $email = $_POST['email'];
                 $password = $_POST['password'];
 
-                $login = $this->connection->prepare("SELECT * FROM User WHERE email = :email AND password = :password");
+                $login = $this->connection->prepare("SELECT userID, firstName, lastName, username, email, password, telephoneNumber, roleID FROM User WHERE email = :email AND password = :password");
                 $login->execute(["email" => $email, "password" => $password]);
                 $login->setFetchMode(PDO::FETCH_CLASS, 'Models\\User');
 
@@ -59,10 +57,10 @@ class UserRepository extends Repository
                 $email = $_POST['email'];
 
 
-                $checkUsername = $this->connection->prepare("SELECT * FROM User WHERE username = :username");
+                $checkUsername = $this->connection->prepare("SELECT userID, firstName, lastName, username, email, password, telephoneNumber, roleID FROM User WHERE username = :username");
                 $checkUsername->execute(["username" => $username]);
 
-                $checkEmail = $this->connection->prepare("SELECT * FROM User WHERE username = :username");
+                $checkEmail = $this->connection->prepare("SELECT userID, firstName, lastName, username, email, password, telephoneNumber, roleID FROM User WHERE email = :email");
                 $checkEmail->execute(["email" => $email]);
 
 
@@ -87,7 +85,7 @@ class UserRepository extends Repository
                 );
 
                 $this->createUser($userDetails);
-                echo "<script>location.assign('/user/loginview')</script>";
+                header("Location: /user/loginview");
             }
             else {
                 echo '<script>alert("You have been caught!")</script>';

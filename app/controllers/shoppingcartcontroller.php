@@ -88,7 +88,7 @@ class ShoppingCartController
                             $_SESSION['reservations'][$events]['totalPrice'] = $newPrice; // check this
                         }
 
-                        if ($_SESSION['reservations'][$events]['amount'] == 0) {
+                        if ($_SESSION['reservations'][$events]['quantity'] == 0) {
                             unset($_SESSION['reservations'][$events]);
                         }
                     }
@@ -210,6 +210,7 @@ class ShoppingCartController
             $venueAdress = $_POST['venueAdress'];
             $price = $_POST['price'];
             $amount = $_POST['amount'];
+            $image = $_POST['image'];
 
             // check if the same item exists, if so, add it
             foreach ($_SESSION['reservations'] as $events => $values) {
@@ -223,7 +224,7 @@ class ShoppingCartController
 
             $totalPrice = $amount * $price;
 
-            $reservation = array('danceID' => $danceID, 'venueName' => $venueName, 'artistName' => $artistName, 'date' => $date, 'startTime' => $startTime, 'venueAddress' => $venueAdress, 'totalPrice' => $totalPrice, 'price' => $price, 'type' => $type, 'quantity' => $amount);
+            $reservation = array('danceID' => $danceID, 'venueName' => $venueName, 'artistName' => $artistName, 'date' => $date, 'startTime' => $startTime, 'venueAddress' => $venueAdress, 'totalPrice' => $totalPrice, 'price' => $price, 'type' => $type, 'quantity' => $amount, 'image' => $image);
 
             array_push($_SESSION['reservations'], $reservation);
 

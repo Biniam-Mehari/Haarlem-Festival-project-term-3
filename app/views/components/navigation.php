@@ -31,7 +31,6 @@
           else {
             echo ('<li><a class= "loginposition" href="/user/loginview">Login</a></li>');
           }
-          echo ('<li><img class="profile" src="..\img\defaultprofile.png" alt="profile" ></li>');
           ?>
           
         </ul>

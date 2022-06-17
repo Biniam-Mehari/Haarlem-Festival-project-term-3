@@ -71,7 +71,7 @@ require_once __DIR__ . '/components/navigation.php';
                         ?>
                             <div class="row border-top border-bottom">
                                 <div class="row main align-items-center">
-                                    <div class="col-2"><img class="img-fluid" style="height: 100px; width: 100px;" src="/img/Afrojack.jpg"></div>
+                                    <div class="col-2"><img class="img-fluid" style="height: 100px; width: 100px;" src="/img/<?php echo $event['image'] ?>.png"></div>
                                     <div class="col">
                                         <div class="row text-muted"> Venue: <?php echo $event['venueName'] ?></div>
                                         <div class="row"> Artist: <?php echo $event['artistName'] ?></div>

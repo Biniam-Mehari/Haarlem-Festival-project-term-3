@@ -76,21 +76,6 @@ class FoodRepository extends Repository {
         }
     }
 
-    public function GetSessionsDateByRestaurantID($id)
-    {
-        try {
-            $stmt = $this->connection->prepare("SELECT DISTINCT startDate FROM `Session` WHERE restaurantID = :restaurantID ORDER BY startDate ASC");
-            $stmt->bindParam(":restaurantID", $id);
-            $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\Session');
-
-            return $stmt->fetchAll();
-        } catch (PDOException $e) {
-            echo "Could not retrieve information from the database for the Session" . $e->getMessage();
-        }
-    }
-
-
     public function GetSessionsTimeByRestaurantID($id)
     {
         try {
@@ -131,7 +116,19 @@ class FoodRepository extends Repository {
         }
     }
 
- 
+    public function GetSessionsDateByRestaurantID($id)
+    {
+        try {
+            $stmt = $this->connection->prepare("SELECT DISTINCT startDate FROM `Session` WHERE restaurantID = :restaurantID ORDER BY startDate ASC");
+            $stmt->bindParam(":restaurantID", $id);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Models\\Session');
+
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo "Could not retrieve information from the database for the Session" . $e->getMessage();
+        }
+    }
 
     // public function GetSessionInformationByRestaurantID($id)
     // {

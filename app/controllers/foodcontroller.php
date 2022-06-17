@@ -21,6 +21,7 @@ class FoodController
         require __DIR__ . '../../views/Food/foodmain.php';
     }
 
+
     public function foodreservation()
     {
         $restaurantID = $_GET['restaurantID'];
