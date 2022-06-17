@@ -33,6 +33,7 @@ class WebhookController {
             if ($payment->isPaid() && ! $payment->hasRefunds() && ! $payment->hasChargebacks()) {
 
                 $this->orderService->updateOrderStatus($orderID, 'paid');
+                var_dump("hi");
         
             } elseif ($payment->isOpen()) {
 
