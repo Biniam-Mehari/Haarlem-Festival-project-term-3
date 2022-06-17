@@ -32,7 +32,7 @@ require_once __DIR__ . '/../components/navigation.php'
       <div class="col-8">
         <h2 class="display-title">Venue: <?php echo $event->Venue->getVenueName() ?></h2>
         <h4 class=""><?php echo $event->Venue->getDescription() ?></h4>
-        <img class="restaurant-image" src="/img/<?php echo $event->Artist->getImage_id() ?>.png">
+        <img class="dance-banner-image" src="/img/grotemarkt.png">
         <br>
         <h1 class="information"> General information</h1>
         <h3 class="information">Location: <?php echo $event->Venue->getAdress()  . " " . $event->Venue->getHousenumber() . ", " . $event->Venue->getPostcode() . ", " . $event->Venue->getCity() ?></h3>
@@ -81,6 +81,7 @@ require_once __DIR__ . '/../components/navigation.php'
           <input name="venueAdress" value="<?php echo $event->Venue->getAdress()?>" hidden>
           <input name="price" value="<?php echo $event->getPrice() ?>" hidden>
           <input name="image" value="<?php echo $event->Artist->getImage_id() ?>" hidden>
+     
           
           <label style="font-size: 18px;">Number of tickets:</label>
             <input class="w3-input" type="number" style="width:30%;" name="amount" id="tickets" placeholder="Enter number of tickets..." required>

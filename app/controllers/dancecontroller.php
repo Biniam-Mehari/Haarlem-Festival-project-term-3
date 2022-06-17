@@ -26,8 +26,7 @@ class DanceController
         $danceID = $_GET['id'];
         $event = $this->danceService->GetDanceInformationByID($danceID);
         require __DIR__ . '../../views/Dance/dancereservation.php';
-        //var_dump($event);
-  
+    
     }
 
 }
